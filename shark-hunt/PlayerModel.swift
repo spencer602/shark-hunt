@@ -23,4 +23,12 @@ struct PlayerModel: CustomStringConvertible {
         return "Name: \(name)"
     }
     
+    var upperText: String {
+       return "\(name): \(matchesWon)/\(matchesPlayed)"
+   }
+   
+   var lowerText: String {
+    return "\(gamesWon)/\(gamesPlayed)"
+   }
+    
 }
