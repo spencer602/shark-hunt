@@ -10,6 +10,8 @@ import UIKit
 
 class MatchHistoryViewController: UIViewController, DataRetrieverProtocol, UITableViewDelegate, UITableViewDataSource {
     
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return matches.count
     }
@@ -30,8 +32,8 @@ class MatchHistoryViewController: UIViewController, DataRetrieverProtocol, UITab
         return myCell
     }
     
-    var urlString: String { return "http://bigskysharkhunt.com/allmatchesjson.php" }
-    
+    var urlString = "http://localhost:8888/league-manager/allmatchesjson.php"
+
     var matches = [MatchModel]()
     
     @IBOutlet weak var listTableView: UITableView!
@@ -43,12 +45,19 @@ class MatchHistoryViewController: UIViewController, DataRetrieverProtocol, UITab
         self.listTableView.delegate = self
         self.listTableView.dataSource = self
         
+        
+
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         let dr = DataRetriever()
         dr.delegate = self
 
         dr.downloadItems()
-
-        // Do any additional setup after loading the view.
+        
     }
     
     

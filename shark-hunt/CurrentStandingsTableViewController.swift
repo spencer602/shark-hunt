@@ -92,19 +92,25 @@ class CurrentStandingsTableViewController: UITableViewController, DataRetrieverP
     
     @IBOutlet var listTableView: UITableView!
     
-    var urlString: String { return "http://bigskysharkhunt.com/currentstandingsjson.php" }
+    var urlString = "http://localhost:8888/league-manager/currentstandingsjson.php"
 
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let dr = DataRetriever()
+        dr.delegate = self
+
+        dr.downloadItems()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.listTableView.delegate = self
         self.listTableView.dataSource = self
         
-        let dr = DataRetriever()
-        dr.delegate = self
-
-        dr.downloadItems()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
