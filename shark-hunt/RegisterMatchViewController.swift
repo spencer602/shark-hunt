@@ -173,6 +173,9 @@ class RegisterMatchViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     @IBAction func registerMatchButtonPressed(_ sender: UIButton) {
         registerMatch()
+        if let tbc = tabBarController {
+            tbc.selectedIndex = 0
+        }
     }
     
     private func registerMatch() {
