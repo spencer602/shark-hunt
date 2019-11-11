@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		090C5C14237925B00095E911 /* CurrentStandingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C5C13237925B00095E911 /* CurrentStandingsTableViewController.swift */; };
+		090C5C162379A7A90095E911 /* RegisterMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C5C152379A7A90095E911 /* RegisterMatchViewController.swift */; };
 		091D8B282374ECEB00F6EC36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D8B272374ECEB00F6EC36 /* AppDelegate.swift */; };
 		091D8B2A2374ECEB00F6EC36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D8B292374ECEB00F6EC36 /* SceneDelegate.swift */; };
 		091D8B2F2374ECEB00F6EC36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 091D8B2D2374ECEB00F6EC36 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		090C5C13237925B00095E911 /* CurrentStandingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentStandingsTableViewController.swift; sourceTree = "<group>"; };
+		090C5C152379A7A90095E911 /* RegisterMatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMatchViewController.swift; sourceTree = "<group>"; };
 		091D8B242374ECEB00F6EC36 /* shark-hunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "shark-hunt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		091D8B272374ECEB00F6EC36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		091D8B292374ECEB00F6EC36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				091D8B272374ECEB00F6EC36 /* AppDelegate.swift */,
 				091D8B292374ECEB00F6EC36 /* SceneDelegate.swift */,
 				091D8B2D2374ECEB00F6EC36 /* Main.storyboard */,
+				090C5C152379A7A90095E911 /* RegisterMatchViewController.swift */,
 				090C5C13237925B00095E911 /* CurrentStandingsTableViewController.swift */,
 				091D8B4723790BBE00F6EC36 /* MatchTableViewCell.swift */,
 				091D8B412378AC5D00F6EC36 /* StandingsViewController.swift */,
@@ -163,6 +166,7 @@
 				090C5C14237925B00095E911 /* CurrentStandingsTableViewController.swift in Sources */,
 				091D8B3E2374F0B400F6EC36 /* PlayerModel.swift in Sources */,
 				091D8B2A2374ECEB00F6EC36 /* SceneDelegate.swift in Sources */,
+				090C5C162379A7A90095E911 /* RegisterMatchViewController.swift in Sources */,
 				091D8B442378BCE900F6EC36 /* MatchHistoryViewController.swift in Sources */,
 				091D8B402375121200F6EC36 /* DataRetriever.swift in Sources */,
 			);
