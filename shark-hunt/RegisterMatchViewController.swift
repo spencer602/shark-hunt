@@ -85,7 +85,7 @@ class RegisterMatchViewController: UIViewController, UIPickerViewDelegate, UIPic
         })
     }
     
-    var urlString: String = "http://localhost:8888/league-manager/currentstandingsjson.php"
+    var urlString: String = Settings.urlStringPrefix + "currentstandingsjson.php"
     
     var players = [PlayerModel]()
     
@@ -180,7 +180,7 @@ class RegisterMatchViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     private func registerMatch() {
         let session = URLSession.shared
-        let url = URL(string: "http://localhost:8888/league-manager/registermatchjson.php")!
+        let url = URL(string: Settings.urlStringPrefix + "registermatchjson.php")!
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -318,7 +318,7 @@ class RegisterMatchViewController: UIViewController, UIPickerViewDelegate, UIPic
             return
         }
         
-        let url = URL(string: "http://localhost:8888/league-manager/registermatchjson.php")!
+        let url = URL(string: Settings.urlStringPrefix + "registermatchjson.php")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -350,7 +350,7 @@ class RegisterMatchViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     func runTestPostRequest() {
         let session = URLSession.shared
-        let url = URL(string: "http://localhost:8888/league-manager/registermatchjson.php")!
+        let url = URL(string: Settings.urlStringPrefix + "registermatchjson.php")!
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

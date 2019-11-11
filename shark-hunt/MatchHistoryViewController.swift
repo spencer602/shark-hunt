@@ -32,7 +32,7 @@ class MatchHistoryViewController: UIViewController, DataRetrieverProtocol, UITab
         return myCell
     }
     
-    var urlString = "http://localhost:8888/league-manager/allmatchesjson.php"
+    var urlString = Settings.urlStringPrefix + "allmatchesjson.php"
 
     var matches = [MatchModel]()
     

@@ -92,7 +92,7 @@ class CurrentStandingsTableViewController: UITableViewController, DataRetrieverP
     
     @IBOutlet var listTableView: UITableView!
     
-    var urlString = "http://localhost:8888/league-manager/currentstandingsjson.php"
+    var urlString = Settings.urlStringPrefix + "currentstandingsjson.php"
 
 
     override func viewDidAppear(_ animated: Bool) {

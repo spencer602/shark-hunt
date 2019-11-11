@@ -20,6 +20,7 @@
 		091D8B442378BCE900F6EC36 /* MatchHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D8B432378BCE900F6EC36 /* MatchHistoryViewController.swift */; };
 		091D8B462378BDBF00F6EC36 /* MatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D8B452378BDBF00F6EC36 /* MatchModel.swift */; };
 		091D8B4823790BBE00F6EC36 /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D8B4723790BBE00F6EC36 /* MatchTableViewCell.swift */; };
+		09B6E230237A28FB002A8C83 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B6E22F237A28FB002A8C83 /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		091D8B432378BCE900F6EC36 /* MatchHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistoryViewController.swift; sourceTree = "<group>"; };
 		091D8B452378BDBF00F6EC36 /* MatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchModel.swift; sourceTree = "<group>"; };
 		091D8B4723790BBE00F6EC36 /* MatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
+		09B6E22F237A28FB002A8C83 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				091D8B412378AC5D00F6EC36 /* StandingsViewController.swift */,
 				091D8B302374ECEC00F6EC36 /* Assets.xcassets */,
 				091D8B322374ECEC00F6EC36 /* LaunchScreen.storyboard */,
+				09B6E22F237A28FB002A8C83 /* Settings.swift */,
 				091D8B352374ECEC00F6EC36 /* Info.plist */,
 			);
 			path = "shark-hunt";
@@ -168,6 +171,7 @@
 				091D8B2A2374ECEB00F6EC36 /* SceneDelegate.swift in Sources */,
 				090C5C162379A7A90095E911 /* RegisterMatchViewController.swift in Sources */,
 				091D8B442378BCE900F6EC36 /* MatchHistoryViewController.swift in Sources */,
+				09B6E230237A28FB002A8C83 /* Settings.swift in Sources */,
 				091D8B402375121200F6EC36 /* DataRetriever.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
