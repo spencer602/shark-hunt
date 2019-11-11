@@ -9,6 +9,14 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DataRetrieverProtocol  {
+    func parseJSON(_ data: Data) {
+        <#code#>
+    }
+    
+    var urlString: String {
+        return 
+    }
+    
     
     var feedItems = [PlayerModel]()
     var selectedPerson = PlayerModel()
@@ -28,7 +36,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.listTableView.dataSource = self
         
         var dr = DataRetriever()
-        dr.downloadItems()
+        dr.downloadItemsMatchHistory()
         dr.delegate = self
 
         // Do any additional setup after loading the view.

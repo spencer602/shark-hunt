@@ -8,21 +8,19 @@
 
 import Foundation
 
-class PlayerModel: NSObject {
+struct PlayerModel: CustomStringConvertible {
     
-    var id: Int?
-    var name: String?
-    var points: Int?
-    var gamesPlayed: Int?
-    var gamesWon: Int?
-    var eros: Int?
-    var matchesPlayed: Int?
-    var matchesWon: Int?
+    var id: Int
+    var name: String
+    var points: Int
+    var gamesPlayed: Int
+    var gamesWon: Int
+    var eros: Int
+    var matchesPlayed: Int
+    var matchesWon: Int
     
-    
-    override var description: String {
-        return "Name: \(name!)"
+    var description: String {
+        return "Name: \(name)"
     }
-    
     
 }
