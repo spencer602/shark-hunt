@@ -31,8 +31,8 @@ class MatchHistoryViewController: UIViewController, DataRetrieverProtocol, UITab
         
         return myCell
     }
-    
-    var urlString = Settings.urlStringPrefix + "allmatchesjson.php"
+        
+    var urlString: String { return Settings.urlStringPrefix + "allmatchesjson.php" }
 
     var matches = [MatchModel]()
     
@@ -52,6 +52,7 @@ class MatchHistoryViewController: UIViewController, DataRetrieverProtocol, UITab
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("match history viewdidappear")
         
         let dr = DataRetriever()
         dr.delegate = self
@@ -79,7 +80,7 @@ class MatchHistoryViewController: UIViewController, DataRetrieverProtocol, UITab
         }
         
         var jsonElement = NSDictionary()
-        var matches = [MatchModel]()
+        var allMatches = [MatchModel]()
         
         for i in 0 ..< jsonResult.count
         {
@@ -123,7 +124,7 @@ class MatchHistoryViewController: UIViewController, DataRetrieverProtocol, UITab
 //                location.latitude = latitude
 //                location.longitude = longitude
                 
-                matches.append(match)
+                allMatches.append(match)
 
             }
             
@@ -134,7 +135,7 @@ class MatchHistoryViewController: UIViewController, DataRetrieverProtocol, UITab
         
         DispatchQueue.main.async(execute: { () -> Void in
             
-            self.itemsDownloaded(items: matches)
+            self.itemsDownloaded(items: allMatches)
             
         })
     }

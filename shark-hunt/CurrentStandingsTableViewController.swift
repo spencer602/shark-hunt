@@ -14,7 +14,7 @@ class CurrentStandingsTableViewController: UITableViewController, DataRetrieverP
     
     func itemsDownloaded(items: [PlayerModel]) {
         players = items
-        self.listTableView.reloadData()
+        listTableView.reloadData()
 
     }
     
@@ -92,11 +92,15 @@ class CurrentStandingsTableViewController: UITableViewController, DataRetrieverP
     
     @IBOutlet var listTableView: UITableView!
     
-    var urlString = Settings.urlStringPrefix + "currentstandingsjson.php"
+    var urlString: String {
+        return Settings.urlStringPrefix + "currentstandingsjson.php"
+    }
 
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        print("standings viewDidappear")
         
         let dr = DataRetriever()
         dr.delegate = self
