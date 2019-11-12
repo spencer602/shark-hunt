@@ -21,6 +21,7 @@
 		091D8B462378BDBF00F6EC36 /* MatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D8B452378BDBF00F6EC36 /* MatchModel.swift */; };
 		091D8B4823790BBE00F6EC36 /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D8B4723790BBE00F6EC36 /* MatchTableViewCell.swift */; };
 		09B6E230237A28FB002A8C83 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B6E22F237A28FB002A8C83 /* Settings.swift */; };
+		09B6E232237A64C8002A8C83 /* RegisterMatchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B6E231237A64C8002A8C83 /* RegisterMatchTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		091D8B452378BDBF00F6EC36 /* MatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchModel.swift; sourceTree = "<group>"; };
 		091D8B4723790BBE00F6EC36 /* MatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
 		09B6E22F237A28FB002A8C83 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		09B6E231237A64C8002A8C83 /* RegisterMatchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMatchTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				091D8B292374ECEB00F6EC36 /* SceneDelegate.swift */,
 				091D8B2D2374ECEB00F6EC36 /* Main.storyboard */,
 				090C5C152379A7A90095E911 /* RegisterMatchViewController.swift */,
+				09B6E231237A64C8002A8C83 /* RegisterMatchTableViewController.swift */,
 				090C5C13237925B00095E911 /* CurrentStandingsTableViewController.swift */,
 				091D8B4723790BBE00F6EC36 /* MatchTableViewCell.swift */,
 				091D8B412378AC5D00F6EC36 /* StandingsViewController.swift */,
@@ -164,6 +167,7 @@
 			files = (
 				091D8B462378BDBF00F6EC36 /* MatchModel.swift in Sources */,
 				091D8B282374ECEB00F6EC36 /* AppDelegate.swift in Sources */,
+				09B6E232237A64C8002A8C83 /* RegisterMatchTableViewController.swift in Sources */,
 				091D8B422378AC5D00F6EC36 /* StandingsViewController.swift in Sources */,
 				091D8B4823790BBE00F6EC36 /* MatchTableViewCell.swift in Sources */,
 				090C5C14237925B00095E911 /* CurrentStandingsTableViewController.swift in Sources */,

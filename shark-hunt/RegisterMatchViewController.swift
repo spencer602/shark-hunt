@@ -29,9 +29,6 @@ class RegisterMatchViewController: UIViewController, UIPickerViewDelegate, UIPic
             
             jsonElement = jsonResult[i] as! NSDictionary
             
-            
-            
-            
             //the following insures none of the JsonElement values are nil through optional binding
             if let id = jsonElement["player_id"] as? String,
                 let name = jsonElement["player_name"] as? String,
@@ -96,6 +93,7 @@ class RegisterMatchViewController: UIViewController, UIPickerViewDelegate, UIPic
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     @IBOutlet weak var p1Picker: UIPickerView!
     @IBOutlet weak var p2Picker: UIPickerView!
     
