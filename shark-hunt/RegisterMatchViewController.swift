@@ -10,6 +10,12 @@ import UIKit
 
 class RegisterMatchViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, DataRetrieverProtocol {
     
+    func reloadData() {
+        let dr = DataRetriever()
+        dr.delegate = self
+        dr.downloadItems()
+    }
+    
     func parseJSON(_ data: Data) {
         var jsonResult = NSArray()
                                     
@@ -282,12 +288,7 @@ class RegisterMatchViewController: UIViewController, UIPickerViewDelegate, UIPic
         p2Picker.delegate = self
         p2Picker.dataSource = self
         
-        let dr = DataRetriever()
-        dr.delegate = self
-
-        dr.downloadItems()
-        
-        
+        reloadData()
 
         //runTestPostRequest()
         // Do any additional setup after loading the view.

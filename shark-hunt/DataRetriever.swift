@@ -11,6 +11,7 @@ import Foundation
 protocol DataRetrieverProtocol: class {
     func parseJSON(_ data: Data)
     var urlString: String { get }
+    func reloadData()
 }
 
 

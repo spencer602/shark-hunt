@@ -10,6 +10,13 @@ import UIKit
 
 class CurrentStandingsTableViewController: UITableViewController, DataRetrieverProtocol {
     
+    func reloadData() {
+        let dr = DataRetriever()
+        dr.delegate = self
+
+        dr.downloadItems()
+    }
+    
     var players = [PlayerModel]()
     
     func itemsDownloaded(items: [PlayerModel]) {
@@ -101,11 +108,8 @@ class CurrentStandingsTableViewController: UITableViewController, DataRetrieverP
         super.viewDidAppear(animated)
         
         print("standings viewDidappear")
+        reloadData()
         
-        let dr = DataRetriever()
-        dr.delegate = self
-
-        dr.downloadItems()
     }
     
     override func viewDidLoad() {

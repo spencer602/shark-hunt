@@ -10,6 +10,12 @@ import UIKit
 
 class MatchHistoryViewController: UIViewController, DataRetrieverProtocol, UITableViewDelegate, UITableViewDataSource {
     
+    func reloadData() {
+        let dr = DataRetriever()
+        dr.delegate = self
+        
+        dr.downloadItems()
+    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,10 +60,7 @@ class MatchHistoryViewController: UIViewController, DataRetrieverProtocol, UITab
         super.viewDidAppear(animated)
         print("match history viewdidappear")
         
-        let dr = DataRetriever()
-        dr.delegate = self
-
-        dr.downloadItems()
+        reloadData()
         
     }
     

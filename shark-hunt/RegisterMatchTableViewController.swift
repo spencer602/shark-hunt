@@ -10,6 +10,13 @@ import UIKit
 
 class RegisterMatchTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, DataRetrieverProtocol {
     
+    func reloadData() {
+        let dr = DataRetriever()
+        dr.delegate = self
+        dr.downloadItems()
+    }
+    
+    
     var urlString: String = Settings.urlStringPrefix + "currentstandingsjson.php"
     
     var players = [PlayerModel]()
@@ -95,9 +102,7 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
     
     @IBAction func registerMatchButtonPressed(_ sender: UIButton) {
         registerMatch()
-        if let tbc = tabBarController {
-            tbc.selectedIndex = 0
-        }
+        
     }
     
     
@@ -131,6 +136,11 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
             if let data = data, let dataString = String(data: data, encoding: .utf8) {
                 print(dataString)
             }
+            
+            DispatchQueue.main.async(execute: { () -> Void in
+                if let tbc = self.tabBarController { tbc.selectedIndex = 0 }
+            })
+            
         }
 
         task.resume()
@@ -213,10 +223,7 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         player2Picker.delegate = self
         player2Picker.dataSource = self
         
-        let dr = DataRetriever()
-        dr.delegate = self
-        
-        dr.downloadItems()
+        reloadData()
 
         // Do any additional setup after loading the view.
     }
