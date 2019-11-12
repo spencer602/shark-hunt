@@ -8,18 +8,62 @@
 
 import UIKit
 
-class RegisterMatchTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, DataRetrieverProtocol {
-    
-    func reloadData() {
-        let dr = DataRetriever()
-        dr.delegate = self
-        dr.downloadItems()
-    }
-    
-    
-    var urlString: String = Settings.urlStringPrefix + "currentstandingsjson.php"
+class RegisterMatchTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var players = [PlayerModel]()
+    
+    func reloadPlayerData() {
+        let urlPath: String = Settings.urlStringPrefix + "currentstandingsjson.php"
+        let url: URL = URL(string: urlPath)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print("Failed to download data")
+            }else {
+                print("Data downloaded")
+               
+                var jsonResult = NSArray()
+                                                
+                do {
+                    jsonResult = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+                } catch let error as NSError {
+                    print(error)
+                }
+                
+                var jsonElement = NSDictionary()
+                var allPlayers = [PlayerModel]()
+                
+                for i in 0 ..< jsonResult.count
+                {
+                    jsonElement = jsonResult[i] as! NSDictionary
+                    
+                    //the following insures none of the JsonElement values are nil through optional binding
+                    if let id = jsonElement["player_id"] as? String,
+                        let name = jsonElement["player_name"] as? String,
+                        let points = jsonElement["points"] as? String,
+                        let gamesPlayed = jsonElement["games_played"] as? String,
+                        let gamesWon = jsonElement["games_won"] as? String,
+                        let eros = jsonElement["eros"] as? String,
+                        let matchesPlayed = jsonElement["matches_played"] as? String,
+                        let matchesWon = jsonElement["matches_won"] as? String
+                    {
+                        let player = PlayerModel(id: Int(id)!, name: name, points: Int(points)!, gamesPlayed: Int(gamesPlayed)!, gamesWon: Int(gamesWon)!, eros: Int(eros)!, matchesPlayed: Int(matchesPlayed)!, matchesWon: Int(matchesWon)!)
+                        allPlayers.append(player)
+                    }
+                }
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.players = allPlayers
+                    self.player1Picker.reloadAllComponents()
+                    self.player2Picker.reloadAllComponents()
+                })
+            }
+        }
+        task.resume()
+    }
+        
+    var urlString: String = Settings.urlStringPrefix + "currentstandingsjson.php"
+    
 
     @IBOutlet weak var player1Picker: UIPickerView!
     @IBOutlet weak var player2Picker: UIPickerView!
@@ -104,7 +148,6 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         registerMatch()
         
     }
-    
     
     private func registerMatch() {
         let session = URLSession.shared
@@ -223,7 +266,7 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         player2Picker.delegate = self
         player2Picker.dataSource = self
         
-        reloadData()
+        reloadPlayerData()
 
         // Do any additional setup after loading the view.
     }
