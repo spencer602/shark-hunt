@@ -9,7 +9,7 @@
 import Foundation
 
 struct Settings {
-    static var isLocal = false
+    static var isLocal = true
     
     static var urlStringPrefix: String {
         return Settings.isLocal ? "http://localhost:8888/league-manager/" : "http://www.bigskysharkhunt.com/"
