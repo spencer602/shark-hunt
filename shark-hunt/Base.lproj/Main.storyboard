@@ -199,11 +199,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qRz-Ne-EHq">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qRz-Ne-EHq">
                                                     <rect key="frame" x="15" y="11" width="345" height="75"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UpperLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kp1-25-rQK">
-                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="34.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -670,7 +670,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNq-IG-H3W">
-                                                    <rect key="frame" x="135" y="11" width="104" height="34"/>
+                                                    <rect key="frame" x="135" y="9" width="104" height="34"/>
                                                     <state key="normal" title="Register Match"/>
                                                     <connections>
                                                         <action selector="registerMatchButtonPressed:" destination="iAI-Zl-ugb" eventType="touchUpInside" id="ROO-ej-MUO"/>
@@ -678,8 +678,8 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="xNq-IG-H3W" firstAttribute="centerX" secondItem="hXE-Zy-a5B" secondAttribute="centerX" id="QUS-mz-etE"/>
-                                                <constraint firstItem="xNq-IG-H3W" firstAttribute="centerY" secondItem="hXE-Zy-a5B" secondAttribute="centerY" id="WEu-Gx-9DM"/>
+                                                <constraint firstItem="xNq-IG-H3W" firstAttribute="centerX" secondItem="hXE-Zy-a5B" secondAttribute="centerX" id="KCo-wa-bGr"/>
+                                                <constraint firstItem="xNq-IG-H3W" firstAttribute="centerY" secondItem="hXE-Zy-a5B" secondAttribute="centerY" id="edx-wF-Vd2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
