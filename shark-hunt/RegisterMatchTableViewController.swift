@@ -8,116 +8,21 @@
 
 import UIKit
 
-class RegisterMatchTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class RegisterMatchTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, DataRetrieverProtocol {
     
+    var dr: DataRetriever?
     var players = [PlayerModel]()
     var locations = [String]()
     
-    func reloadPlayerData() {
-        let urlPath: String = Settings.urlStringPrefix + "currentstandingsjson.php"
-        let url: URL = URL(string: urlPath)!
-        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
-        
-        let task = defaultSession.dataTask(with: url) { (data, response, error) in
-            if error != nil {
-                print("Failed to download data")
-            }else {
-                print("Data downloaded")
-               
-                var jsonResult = NSArray()
-                                                
-                do {
-                    jsonResult = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
-                } catch let error as NSError {
-                    print(error)
-                }
-                
-                var jsonElement = NSDictionary()
-                var allPlayers = [PlayerModel]()
-                
-                for i in 0 ..< jsonResult.count
-                {
-                    jsonElement = jsonResult[i] as! NSDictionary
-                    
-                    //the following insures none of the JsonElement values are nil through optional binding
-                    if let id = jsonElement["player_id"] as? String,
-                        let name = jsonElement["player_name"] as? String,
-                        let points = jsonElement["points"] as? String,
-                        let gamesPlayed = jsonElement["games_played"] as? String,
-                        let gamesWon = jsonElement["games_won"] as? String,
-                        let eros = jsonElement["eros"] as? String,
-                        let matchesPlayed = jsonElement["matches_played"] as? String,
-                        let matchesWon = jsonElement["matches_won"] as? String
-                    {
-                        let player = PlayerModel(id: Int(id)!, name: name, points: Int(points)!, gamesPlayed: Int(gamesPlayed)!, gamesWon: Int(gamesWon)!, eros: Int(eros)!, matchesPlayed: Int(matchesPlayed)!, matchesWon: Int(matchesWon)!)
-                        allPlayers.append(player)
-                    }
-                }
-                DispatchQueue.main.async(execute: { () -> Void in
-                    self.players = allPlayers
-                    self.player1Picker.reloadAllComponents()
-                    self.player2Picker.reloadAllComponents()
-                })
-            }
-        }
-        task.resume()
-    }
-    
-    func reloadLocationsData() {
-        let urlPath: String = Settings.urlStringPrefix + "alllocationjson.php"
-        let url: URL = URL(string: urlPath)!
-        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
-        
-        let task = defaultSession.dataTask(with: url) { (data, response, error) in
-            if error != nil {
-                print("Failed to download data")
-            }else {
-                print("Data downloaded")
-               
-                var jsonResult = NSArray()
-                                                
-                do {
-                    jsonResult = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
-                } catch let error as NSError {
-                    print(error)
-                }
-                
-                var jsonElement = NSDictionary()
-                var allLocations = [String]()
-                
-                for i in 0 ..< jsonResult.count
-                {
-                    jsonElement = jsonResult[i] as! NSDictionary
-                    
-                    //the following insures none of the JsonElement values are nil through optional binding
-                    if let name = jsonElement["location_name"] as? String
-                    {
-                        allLocations.append(name)
-                    }
-                }
-                DispatchQueue.main.async(execute: { () -> Void in
-                    self.locations = allLocations
-                    self.locationPicker.reloadAllComponents()
-                })
-            }
-        }
-        task.resume()
-    }
-        
-    var urlString: String = Settings.urlStringPrefix + "currentstandingsjson.php"
-    
-
     @IBOutlet weak var player1Picker: UIPickerView!
     @IBOutlet weak var player2Picker: UIPickerView!
     @IBOutlet weak var locationPicker: UIPickerView!
-    
     
     @IBOutlet weak var p1GamesToWin: UILabel!
     @IBOutlet weak var p1Points: UILabel!
     
     @IBOutlet weak var p1GamesWon: UILabel!
     @IBOutlet weak var p1EROs: UILabel!
-    
     
     @IBOutlet weak var p2GamesToWin: UILabel!
     @IBOutlet weak var p2Points: UILabel!
@@ -135,7 +40,34 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
     @IBOutlet weak var p2GamesWonStepper: UIStepper!
     @IBOutlet weak var p2EROsStepper: UIStepper!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        dr = DataRetriever(withDelegate: self)
+        
+        dr?.downloadPlayerData()
+        dr?.downloadLocationData()
+        
+        setUpSteppers()
+        player1Picker.delegate = self
+        player1Picker.dataSource = self
+        player2Picker.delegate = self
+        player2Picker.dataSource = self
+        locationPicker.delegate = self
+        locationPicker.dataSource = self
+    }
     
+    func updatePlayerDataFromDataRetriever(withPlayerData playerData: [PlayerModel]) {
+        self.players = playerData
+        player1Picker.reloadAllComponents()
+        player2Picker.reloadAllComponents()
+    }
+    
+    func updateLocationNameDataFromDataRetriever(withLocationNameData locationNameData: [String]) {
+        self.locations = locationNameData
+        locationPicker.reloadAllComponents()
+    }
+
     private func updateLabels() {
         p1GamesToWin.text = "Games to Win: \(Int(p1GamesToWinStepper.value))"
         p1Points.text = "Points Wagered: \(Int(p1PointsStepper.value))"
@@ -145,50 +77,6 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         p2Points.text = "Points Wagered: \(Int(p2PointsStepper.value))"
         p2GamesWon.text = "Games Won: \(Int(p2GamesWonStepper.value))"
         p2EROs.text = "EROs: \(Int(p2EROsStepper.value))"
-    }
-    
-    
-    @IBAction func p1GamesToWinChanged(_ sender: UIStepper) {
-        p1GamesWonStepper.maximumValue = sender.value
-        p1EROsStepper.maximumValue = p1GamesWonStepper.value
-        updateLabels()
-    }
-    
-    @IBAction func p1PointsChanged(_ sender: UIStepper) {
-        updateLabels()
-    }
-    
-    @IBAction func p1GamesWonChanged(_ sender: UIStepper) {
-        p1EROsStepper.maximumValue = sender.value
-        updateLabels()
-    }
-    @IBAction func p1EROsChanged(_ sender: UIStepper) {
-        updateLabels()
-    }
-    
-    @IBAction func p2GamesToWinChanged(_ sender: UIStepper) {
-        p2GamesWonStepper.maximumValue = sender.value
-        p2EROsStepper.maximumValue = p2GamesWonStepper.value
-
-        updateLabels()
-    }
-    
-    @IBAction func p2PointsChanged(_ sender: UIStepper) {
-        updateLabels()
-    }
-    
-    @IBAction func p2GamesWonChanged(_ sender: UIStepper) {
-        p2EROsStepper.maximumValue = sender.value
-        updateLabels()
-    }
-    
-    @IBAction func p2EROsChanged(_ sender: UIStepper) {
-        updateLabels()
-    }
-    
-    @IBAction func registerMatchButtonPressed(_ sender: UIButton) {
-        registerMatch()
-        
     }
     
     private func registerMatch() {
@@ -217,7 +105,6 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         
         print(jsonData)
 
-        
         let task = session.uploadTask(with: request, from: jsonData) { data, response, error in
             if let data = data, let dataString = String(data: data, encoding: .utf8) {
                 print(dataString)
@@ -226,9 +113,7 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
             DispatchQueue.main.async(execute: { () -> Void in
                 if let tbc = self.tabBarController { tbc.selectedIndex = 0 }
             })
-            
         }
-
         task.resume()
     }
     
@@ -282,9 +167,7 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         p2EROsStepper.autorepeat = false
         p2EROsStepper.isContinuous = false
         p2EROsStepper.value = 0
-
     }
-    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -302,112 +185,47 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         else { return nil }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setUpSteppers()
-        
-        player1Picker.delegate = self
-        player1Picker.dataSource = self
-        player2Picker.delegate = self
-        player2Picker.dataSource = self
-        locationPicker.delegate = self
-        locationPicker.dataSource = self
-        
-        reloadPlayerData()
-        reloadLocationsData()
-
-        // Do any additional setup after loading the view.
+    @IBAction func p1GamesToWinChanged(_ sender: UIStepper) {
+        p1GamesWonStepper.maximumValue = sender.value
+        p1EROsStepper.maximumValue = p1GamesWonStepper.value
+        updateLabels()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        reloadPlayerData()
-        reloadLocationsData()
+    @IBAction func p1PointsChanged(_ sender: UIStepper) {
+        updateLabels()
     }
     
-    func parseJSON(_ data: Data) {
-        var jsonResult = NSArray()
-                                    
-        do{
-            jsonResult = try JSONSerialization.jsonObject(with: data, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
-            
-        } catch let error as NSError {
-            print(error)
-            
-        }
-        
-        var jsonElement = NSDictionary()
-        var allPlayers = [PlayerModel]()
-        
-        for i in 0 ..< jsonResult.count
-        {
-            
-            jsonElement = jsonResult[i] as! NSDictionary
-            
-            //the following insures none of the JsonElement values are nil through optional binding
-            if let id = jsonElement["player_id"] as? String,
-                let name = jsonElement["player_name"] as? String,
-                let points = jsonElement["points"] as? String,
-                let gamesPlayed = jsonElement["games_played"] as? String,
-                let gamesWon = jsonElement["games_won"] as? String,
-                let eros = jsonElement["eros"] as? String,
-                let matchesPlayed = jsonElement["matches_played"] as? String,
-                let matchesWon = jsonElement["matches_won"] as? String
-            {
-            
-    //            if let p1Name = jsonElement["p1name"] as? String,    // name
-    //                let p2Name = jsonElement["p2name"] as? String,   // name
-    //                let p1PointsWagered = jsonElement["p1_points_wagered"] as? String,
-    //                let p2PointsWagered = jsonElement["p2_points_wagered"] as? String,
-    //                let p1GamesNeeded = jsonElement["p1_games_needed"] as? String,
-    //                let p2GamesNeeded = jsonElement["p2_games_needed"] as? String,
-    //                let p1GamesWon = jsonElement["p1_games_won"] as? String,
-    //                let p2GamesWon = jsonElement["p2_games_won"] as? String,
-    //                let p1ERO = jsonElement["p1_ero"] as? String,
-    //                let p2ERO = jsonElement["p2_ero"] as? String,
-    //                let dateAndTime = jsonElement["date_and_time"] as? String,
-    //                let locationPlayed = jsonElement["location_played"] as? String
-    //            {
-                
-                let player = PlayerModel(id: Int(id)!, name: name, points: Int(points)!, gamesPlayed: Int(gamesPlayed)!, gamesWon: Int(gamesWon)!, eros: Int(eros)!, matchesPlayed: Int(matchesPlayed)!, matchesWon: Int(matchesWon)!)
-
-            
-                
-    //                location.name = name
-    //                location.address = address
-    //                location.latitude = latitude
-    //                location.longitude = longitude
-                
-                allPlayers.append(player)
-
-            }
-            
-            //print(player)
-            
-            
-        }
-        
-        DispatchQueue.main.async(execute: { () -> Void in
-            
-            self.players = allPlayers
-            self.player1Picker.reloadAllComponents()
-            self.player2Picker.reloadAllComponents()
-
-                
-            })
-        }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func p1GamesWonChanged(_ sender: UIStepper) {
+        p1EROsStepper.maximumValue = sender.value
+        updateLabels()
     }
-    */
-
+    @IBAction func p1EROsChanged(_ sender: UIStepper) {
+        updateLabels()
+    }
+    
+    @IBAction func p2GamesToWinChanged(_ sender: UIStepper) {
+        p2GamesWonStepper.maximumValue = sender.value
+        p2EROsStepper.maximumValue = p2GamesWonStepper.value
+        updateLabels()
+    }
+    
+    @IBAction func p2PointsChanged(_ sender: UIStepper) {
+        updateLabels()
+    }
+    
+    @IBAction func p2GamesWonChanged(_ sender: UIStepper) {
+        p2EROsStepper.maximumValue = sender.value
+        updateLabels()
+    }
+    
+    @IBAction func p2EROsChanged(_ sender: UIStepper) {
+        updateLabels()
+    }
+    
+    @IBAction func registerMatchButtonPressed(_ sender: UIButton) {
+        registerMatch()
+    }
+    
+    // unused
+    func updateMatchHistoryDataFromDataRetriever(withMatchHistoryData matchHistoryData: [MatchModel]) { }
 }
