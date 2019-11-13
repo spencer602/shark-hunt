@@ -225,7 +225,7 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
     @IBAction func registerMatchButtonPressed(_ sender: UIButton) {
         // nobody won???
         if p1GamesWonStepper.value != p1GamesToWinStepper.value && p2GamesWonStepper.value != p2GamesToWinStepper.value {
-            var noWinnerAlert = UIAlertController(
+            let noWinnerAlert = UIAlertController(
                 title: "No Winner Selected",
                 message: "With current input, there is no winner of this match. Please double check your input",
                 preferredStyle: .alert)
@@ -235,9 +235,26 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
                 style: .cancel
             ))
             
-            
+            present(noWinnerAlert, animated: true, completion: nil)
         }
-        registerMatch()
+        // both players won???
+        else if p1GamesWonStepper.value == p1GamesToWinStepper.value && p2GamesWonStepper.value == p2GamesToWinStepper.value {
+            let dualWinnerAlert = UIAlertController(
+                title: "Two Winners Selected",
+                message: "With current input, there appears to be two winners of this match. Please double check your input",
+                preferredStyle: .alert)
+            
+            dualWinnerAlert.addAction(UIAlertAction(
+                title: "OK",
+                style: .cancel
+            ))
+
+            present(dualWinnerAlert, animated: true, completion: nil)
+        }
+        // valid data, go ahead and register the match
+        else {
+            registerMatch()
+        }
     }
     
     // unused
