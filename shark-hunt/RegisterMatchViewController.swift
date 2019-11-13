@@ -10,87 +10,72 @@ import UIKit
 
 class RegisterMatchViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, DataRetrieverProtocol {
     
-    func reloadData() {
-        let dr = DataRetriever()
-        dr.delegate = self
-        dr.downloadItems()
-    }
-    
-    func parseJSON(_ data: Data) {
-        var jsonResult = NSArray()
-                                    
-        do{
-            jsonResult = try JSONSerialization.jsonObject(with: data, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
-            
-        } catch let error as NSError {
-            print(error)
-            
-        }
-        
-        var jsonElement = NSDictionary()
-        var allPlayers = [PlayerModel]()
-        
-        for i in 0 ..< jsonResult.count
-        {
-            
-            jsonElement = jsonResult[i] as! NSDictionary
-            
-            //the following insures none of the JsonElement values are nil through optional binding
-            if let id = jsonElement["player_id"] as? String,
-                let name = jsonElement["player_name"] as? String,
-                let points = jsonElement["points"] as? String,
-                let gamesPlayed = jsonElement["games_played"] as? String,
-                let gamesWon = jsonElement["games_won"] as? String,
-                let eros = jsonElement["eros"] as? String,
-                let matchesPlayed = jsonElement["matches_played"] as? String,
-                let matchesWon = jsonElement["matches_won"] as? String
-            {
-            
-//            if let p1Name = jsonElement["p1name"] as? String,    // name
-//                let p2Name = jsonElement["p2name"] as? String,   // name
-//                let p1PointsWagered = jsonElement["p1_points_wagered"] as? String,
-//                let p2PointsWagered = jsonElement["p2_points_wagered"] as? String,
-//                let p1GamesNeeded = jsonElement["p1_games_needed"] as? String,
-//                let p2GamesNeeded = jsonElement["p2_games_needed"] as? String,
-//                let p1GamesWon = jsonElement["p1_games_won"] as? String,
-//                let p2GamesWon = jsonElement["p2_games_won"] as? String,
-//                let p1ERO = jsonElement["p1_ero"] as? String,
-//                let p2ERO = jsonElement["p2_ero"] as? String,
-//                let dateAndTime = jsonElement["date_and_time"] as? String,
-//                let locationPlayed = jsonElement["location_played"] as? String
-//            {
-                
-                let player = PlayerModel(id: Int(id)!, name: name, points: Int(points)!, gamesPlayed: Int(gamesPlayed)!, gamesWon: Int(gamesWon)!, eros: Int(eros)!, matchesPlayed: Int(matchesPlayed)!, matchesWon: Int(matchesWon)!)
-
-            
-                
-//                location.name = name
-//                location.address = address
-//                location.latitude = latitude
-//                location.longitude = longitude
-                
-                allPlayers.append(player)
-
-            }
-            
-            //print(player)
-            
-            
-        }
-        
-        DispatchQueue.main.async(execute: { () -> Void in
-            
-            self.players = allPlayers
-            self.p1Picker.reloadAllComponents()
-            self.p2Picker.reloadAllComponents()
-
-            
-        })
-    }
-    
-    var urlString: String = Settings.urlStringPrefix + "currentstandingsjson.php"
-    
+    var dr: DataRetriever?
     var players = [PlayerModel]()
+    
+    
+    @IBOutlet weak var p1Picker: UIPickerView!
+    @IBOutlet weak var p2Picker: UIPickerView!
+
+    @IBOutlet weak var p1GamesToWin: UILabel!
+    @IBOutlet weak var p1Points: UILabel!
+
+    @IBOutlet weak var p1GamesWon: UILabel!
+    @IBOutlet weak var p1EROs: UILabel!
+
+    @IBOutlet weak var p2GamesToWin: UILabel!
+    @IBOutlet weak var p2Points: UILabel!
+
+    @IBOutlet weak var p2GamesWon: UILabel!
+    @IBOutlet weak var p2EROs: UILabel!
+
+    @IBOutlet weak var p1GamesToWinStepper: UIStepper!
+    @IBOutlet weak var p1PointsStepper: UIStepper!
+    @IBOutlet weak var p1GamesWonStepper: UIStepper!
+    @IBOutlet weak var p1EROsStepper: UIStepper!
+
+    @IBOutlet weak var p2GamesToWinStepper: UIStepper!
+    @IBOutlet weak var p2PointsStepper: UIStepper!
+    @IBOutlet weak var p2GamesWonStepper: UIStepper!
+    @IBOutlet weak var p2EROsStepper: UIStepper!
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        dr = DataRetriever(withDelegate: self)
+        setUpSteppers()
+
+        p1Picker.delegate = self
+        p1Picker.dataSource = self
+
+        p2Picker.delegate = self
+        p2Picker.dataSource = self
+    }
+        
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        dr?.downloadPlayerData()
+        dr?.downloadLocationData()
+    }
+    
+    func updatePlayerDataFromDataRetriever(withPlayerData playerData: [PlayerModel]) {
+        
+    }
+    
+    func updateMatchHistoryDataFromDataRetriever(withMatchHistoryData matchHistoryData: [MatchModel]) {
+        
+    }
+    
+    func updateLocationNameDataFromDataRetriever(withLocationNameData locationNameData: [String]) {
+        
+    }
+    
+    
+    
+    
+    
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return players[row].name;
@@ -100,32 +85,7 @@ class RegisterMatchViewController: UIViewController, UIPickerViewDelegate, UIPic
         return 1
     }
     
-    @IBOutlet weak var p1Picker: UIPickerView!
-    @IBOutlet weak var p2Picker: UIPickerView!
-    
-    
-    @IBOutlet weak var p1GamesToWin: UILabel!
-    @IBOutlet weak var p1Points: UILabel!
-    
-    @IBOutlet weak var p1GamesWon: UILabel!
-    @IBOutlet weak var p1EROs: UILabel!
-    
-    
-    @IBOutlet weak var p2GamesToWin: UILabel!
-    @IBOutlet weak var p2Points: UILabel!
-    
-    @IBOutlet weak var p2GamesWon: UILabel!
-    @IBOutlet weak var p2EROs: UILabel!
-    
-    @IBOutlet weak var p1GamesToWinStepper: UIStepper!
-    @IBOutlet weak var p1PointsStepper: UIStepper!
-    @IBOutlet weak var p1GamesWonStepper: UIStepper!
-    @IBOutlet weak var p1EROsStepper: UIStepper!
-    
-    @IBOutlet weak var p2GamesToWinStepper: UIStepper!
-    @IBOutlet weak var p2PointsStepper: UIStepper!
-    @IBOutlet weak var p2GamesWonStepper: UIStepper!
-    @IBOutlet weak var p2EROsStepper: UIStepper!
+   
     
     
     private func updateLabels() {
@@ -275,31 +235,7 @@ class RegisterMatchViewController: UIViewController, UIPickerViewDelegate, UIPic
         return players.count
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setUpSteppers()
-        
-        
-        
-        p1Picker.delegate = self
-        p1Picker.dataSource = self
-        
-        p2Picker.delegate = self
-        p2Picker.dataSource = self
-        
-        reloadData()
-
-        //runTestPostRequest()
-        // Do any additional setup after loading the view.
-    }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        appleTestRun()
-        //runTestPostRequest()
-    }
     
     func appleTestRun() {
         
