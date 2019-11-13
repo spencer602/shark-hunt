@@ -52,8 +52,8 @@ class CurrentStandingsTableViewController: UITableViewController, DataRetrieverP
             // Get the location to be shown
             let item = players[indexPath.row]
             // Get references to labels of cell
-            myStandingCell.upperLabel.text = "\(indexPath.row) " + item.upperText
-            myStandingCell.lowerLabel.text = item.lowerText
+            myStandingCell.upperLabel.text = "\(indexPath.row + 1) --  Points: \(item.points)  \(item.name)"
+            myStandingCell.lowerLabel.text = "Games:\(item.gamesWon)/\(item.gamesPlayed)   Matches: \(item.matchesWon)/\(item.matchesPlayed)"
         }
 
         // Configure the cell...
