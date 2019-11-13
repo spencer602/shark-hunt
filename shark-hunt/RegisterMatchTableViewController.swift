@@ -223,7 +223,52 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
     }
     
     @IBAction func registerMatchButtonPressed(_ sender: UIButton) {
-        registerMatch()
+        // nobody won???
+        if p1GamesWonStepper.value != p1GamesToWinStepper.value && p2GamesWonStepper.value != p2GamesToWinStepper.value {
+            let noWinnerAlert = UIAlertController(
+                title: "No Winner Selected",
+                message: "With current input, there is no winner of this match. Please double check your input",
+                preferredStyle: .alert)
+            
+            noWinnerAlert.addAction(UIAlertAction(
+                title: "OK",
+                style: .cancel
+            ))
+            
+            present(noWinnerAlert, animated: true, completion: nil)
+        }
+        // both players won???
+        else if p1GamesWonStepper.value == p1GamesToWinStepper.value && p2GamesWonStepper.value == p2GamesToWinStepper.value {
+            let dualWinnerAlert = UIAlertController(
+                title: "Two Winners Selected",
+                message: "With current input, there appears to be two winners of this match. Please double check your input",
+                preferredStyle: .alert)
+            
+            dualWinnerAlert.addAction(UIAlertAction(
+                title: "OK",
+                style: .cancel
+            ))
+
+            present(dualWinnerAlert, animated: true, completion: nil)
+        }
+        // playing with yourself???
+        else if player1Picker.selectedRow(inComponent: 0) == player2Picker.selectedRow(inComponent: 0) {
+            let playingWithYourselfAlert = UIAlertController(
+                title: "Playing With Yourself?",
+                message: "With current input, it appears that you are playing against yourself. Please double check your input",
+                preferredStyle: .alert)
+            
+            playingWithYourselfAlert.addAction(UIAlertAction(
+                title: "OK",
+                style: .cancel
+            ))
+
+            present(playingWithYourselfAlert, animated: true, completion: nil)
+        }
+        // valid data, go ahead and register the match
+        else {
+            registerMatch()
+        }
     }
     
     // unused
