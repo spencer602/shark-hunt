@@ -56,8 +56,6 @@ class CurrentStandingsTableViewController: UITableViewController, DataRetrieverP
             myStandingCell.lowerLabel.text = "Games:\(item.gamesWon)/\(item.gamesPlayed)   Matches: \(item.matchesWon)/\(item.matchesPlayed)"
         }
 
-        // Configure the cell...
-
         return cell
     }
 
