@@ -223,6 +223,20 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
     }
     
     @IBAction func registerMatchButtonPressed(_ sender: UIButton) {
+        // nobody won???
+        if p1GamesWonStepper.value != p1GamesToWinStepper.value && p2GamesWonStepper.value != p2GamesToWinStepper.value {
+            var noWinnerAlert = UIAlertController(
+                title: "No Winner Selected",
+                message: "With current input, there is no winner of this match. Please double check your input",
+                preferredStyle: .alert)
+            
+            noWinnerAlert.addAction(UIAlertAction(
+                title: "OK",
+                style: .cancel
+            ))
+            
+            
+        }
         registerMatch()
     }
     
