@@ -251,6 +251,20 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
 
             present(dualWinnerAlert, animated: true, completion: nil)
         }
+        // playing with yourself???
+        else if player1Picker.selectedRow(inComponent: 0) == player2Picker.selectedRow(inComponent: 0) {
+            let playingWithYourselfAlert = UIAlertController(
+                title: "Playing With Yourself?",
+                message: "With current input, it appears that you are playing against yourself. Please double check your input",
+                preferredStyle: .alert)
+            
+            playingWithYourselfAlert.addAction(UIAlertAction(
+                title: "OK",
+                style: .cancel
+            ))
+
+            present(playingWithYourselfAlert, animated: true, completion: nil)
+        }
         // valid data, go ahead and register the match
         else {
             registerMatch()
