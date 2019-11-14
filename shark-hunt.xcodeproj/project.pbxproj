@@ -22,6 +22,8 @@
 		09B6E230237A28FB002A8C83 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B6E22F237A28FB002A8C83 /* Settings.swift */; };
 		09B6E232237A64C8002A8C83 /* RegisterMatchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B6E231237A64C8002A8C83 /* RegisterMatchTableViewController.swift */; };
 		09B6E234237B19D3002A8C83 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B6E233237B19D3002A8C83 /* SettingsViewController.swift */; };
+		09E5B632237DC82E0081E5C7 /* StandingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E5B631237DC82E0081E5C7 /* StandingsTableViewCell.swift */; };
+		09E5B634237DCCCF0081E5C7 /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E5B633237DCCCF0081E5C7 /* UtilityExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		09B6E22F237A28FB002A8C83 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		09B6E231237A64C8002A8C83 /* RegisterMatchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMatchTableViewController.swift; sourceTree = "<group>"; };
 		09B6E233237B19D3002A8C83 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		09E5B631237DC82E0081E5C7 /* StandingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsTableViewCell.swift; sourceTree = "<group>"; };
+		09E5B633237DCCCF0081E5C7 /* UtilityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,11 +85,13 @@
 				091D8B272374ECEB00F6EC36 /* AppDelegate.swift */,
 				091D8B292374ECEB00F6EC36 /* SceneDelegate.swift */,
 				091D8B2D2374ECEB00F6EC36 /* Main.storyboard */,
+				09E5B633237DCCCF0081E5C7 /* UtilityExtensions.swift */,
 				09B6E233237B19D3002A8C83 /* SettingsViewController.swift */,
 				090C5C152379A7A90095E911 /* RegisterMatchViewController.swift */,
 				09B6E231237A64C8002A8C83 /* RegisterMatchTableViewController.swift */,
 				090C5C13237925B00095E911 /* CurrentStandingsTableViewController.swift */,
 				091D8B4723790BBE00F6EC36 /* MatchTableViewCell.swift */,
+				09E5B631237DC82E0081E5C7 /* StandingsTableViewCell.swift */,
 				091D8B302374ECEC00F6EC36 /* Assets.xcassets */,
 				091D8B322374ECEC00F6EC36 /* LaunchScreen.storyboard */,
 				09B6E22F237A28FB002A8C83 /* Settings.swift */,
@@ -174,6 +180,8 @@
 				091D8B2A2374ECEB00F6EC36 /* SceneDelegate.swift in Sources */,
 				090C5C162379A7A90095E911 /* RegisterMatchViewController.swift in Sources */,
 				091D8B442378BCE900F6EC36 /* MatchHistoryViewController.swift in Sources */,
+				09E5B632237DC82E0081E5C7 /* StandingsTableViewCell.swift in Sources */,
+				09E5B634237DCCCF0081E5C7 /* UtilityExtensions.swift in Sources */,
 				09B6E234237B19D3002A8C83 /* SettingsViewController.swift in Sources */,
 				09B6E230237A28FB002A8C83 /* Settings.swift in Sources */,
 				091D8B402375121200F6EC36 /* DataRetriever.swift in Sources */,

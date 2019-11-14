@@ -46,14 +46,17 @@ class CurrentStandingsTableViewController: UITableViewController, DataRetrieverP
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BasicStandingsCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StandingsCell")!
         
-        if let myStandingCell = cell as? MatchTableViewCell {
+        if let myStandingCell = cell as? StandingsTableViewCell {
             // Get the location to be shown
             let item = players[indexPath.row]
             // Get references to labels of cell
-            myStandingCell.upperLabel.text = "\(indexPath.row + 1) --  Points: \(item.points)  \(item.name)"
-            myStandingCell.lowerLabel.text = "Games:\(item.gamesWon)/\(item.gamesPlayed)   Matches: \(item.matchesWon)/\(item.matchesPlayed)"
+            
+            myStandingCell.rankLabel.text = String(indexPath.row + 1)
+            myStandingCell.titleLabel.text = String(item.points) + "   " + item.name
+            myStandingCell.detailOneLabel.text = "Matches: " + (item.matchesPlayed != 0 ? String((100 * Double(item.matchesWon)/Double(item.matchesPlayed)).easyToReadNotation(withDecimalPlaces: 1)) : "NA") + "% (\(item.matchesWon)/\(item.matchesPlayed))"
+            myStandingCell.detailThreeLabel.text = "Games: " + (item.gamesPlayed != 0 ? String((100 * Double(item.gamesWon)/Double(item.gamesPlayed)).easyToReadNotation(withDecimalPlaces: 1)) : "NA") + "% (\(item.gamesWon)/\(item.gamesPlayed))  -  ERO: \(item.eros)"
         }
 
         return cell
