@@ -45,9 +45,6 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         
         dr = DataRetriever(withDelegate: self)
         
-        dr?.downloadPlayerData()
-        dr?.downloadLocationData()
-        
         setUpSteppers()
         player1Picker.delegate = self
         player1Picker.dataSource = self
@@ -55,6 +52,13 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         player2Picker.dataSource = self
         locationPicker.delegate = self
         locationPicker.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        dr?.downloadPlayerData()
+        dr?.downloadLocationData()
     }
     
     func updatePlayerDataFromDataRetriever(withPlayerData playerData: [PlayerModel]) {

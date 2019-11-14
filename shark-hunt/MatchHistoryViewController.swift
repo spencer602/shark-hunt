@@ -43,9 +43,8 @@ class MatchHistoryViewController: UIViewController, DataRetrieverProtocol, UITab
         let myCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
         
         if let myMatchCell = myCell as? MatchTableViewCell {
-            // Get the location to be shown
             let item = matches[indexPath.row]
-            // Get references to labels of cell
+            
             myMatchCell.upperLabel.text = item.upperText
             myMatchCell.lowerLabel.text = item.lowerText
         }
