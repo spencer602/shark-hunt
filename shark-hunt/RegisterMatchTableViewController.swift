@@ -63,12 +63,14 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
     
     func updatePlayerDataFromDataRetriever(withPlayerData playerData: [PlayerModel]) {
         self.players = playerData
+        players.sort() { $0.name < $1.name }
         player1Picker.reloadAllComponents()
         player2Picker.reloadAllComponents()
     }
     
     func updateLocationNameDataFromDataRetriever(withLocationNameData locationNameData: [String]) {
         self.locations = locationNameData
+        locations.sort() { $0 < $1 }
         locationPicker.reloadAllComponents()
     }
 
