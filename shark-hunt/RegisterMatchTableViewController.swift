@@ -104,8 +104,9 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
             "playerTwoPointsInput": Int(p2PointsStepper.value),
             "playerOneGamesWonInput": Int(p1GamesWonStepper.value),
             "playerTwoGamesWonInput": Int(p2GamesWonStepper.value),
-            "locationPlayed": locations[locationPicker.selectedRow(inComponent: 0)]
-        ]
+            "locationPlayed": locations[locationPicker.selectedRow(inComponent: 0)],
+            "playerOneERO": Int(p1EROsStepper.value),
+            "playerTwoERO": Int(p2EROsStepper.value)  ]
         
         let jsonData = try! JSONSerialization.data(withJSONObject: json, options: [])
         
