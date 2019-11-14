@@ -35,11 +35,11 @@ struct MatchModel: CustomStringConvertible {
     }
     
     var p1Text: String {
-        return "\(p1Name): \(p1GamesWon)/\(p1GamesNeeded)  \(p1Won ? "+" : "-")\(dPoints)"
+        return "\(p1Name) \(p1Won ? "+" : "-")\(dPoints):   \(p1GamesWon)/\(p1GamesNeeded)   \(p1ERO > 0 ? "ERO: \(p1ERO)": "")"
     }
     
     var p2Text: String {
-        return "\(p2Name): \(p2GamesWon)/\(p2GamesNeeded)  \(p1Won ? "-" : "+")\(dPoints)"
+        return "\(p2Name) \(p1Won ? "-" : "+")\(dPoints):   \(p2GamesWon)/\(p2GamesNeeded)   \(p2ERO > 0 ? "ERO: \(p2ERO)": "")"
     }
     
     var upperText: String {
