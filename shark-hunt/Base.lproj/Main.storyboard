@@ -285,28 +285,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicStandingsCell" rowHeight="97" id="SIP-VJ-c4K" customClass="MatchTableViewCell" customModule="shark_hunt" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="97"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StandingsCell" rowHeight="115" id="SIP-VJ-c4K" customClass="StandingsTableViewCell" customModule="shark_hunt" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="115"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SIP-VJ-c4K" id="C4g-fw-s3f">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9qk-Sm-uIa">
-                                            <rect key="frame" x="16" y="11" width="343" height="75"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7F-q0-IaW">
+                                            <rect key="frame" x="16" y="31" width="14" height="53"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Wg5-Iu-VIa">
+                                            <rect key="frame" x="54" y="24" width="214.5" height="67"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UpperLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45c-L1-HSQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="34.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250 - Player Name " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ruj-qP-4PV">
+                                                    <rect key="frame" x="0.0" y="0.0" width="168.5" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LowerLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9JJ-wn-Kpk">
-                                                    <rect key="frame" x="0.0" y="54.5" width="343" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matches: 50% (10/20)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vC-9Y-FS8">
+                                                    <rect key="frame" x="0.0" y="31" width="143" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Games: 52.3% (58/111)  -  ERO: 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPw-C0-gxT">
+                                                    <rect key="frame" x="0.0" y="55" width="214.5" height="12"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20.5" id="J07-jP-4nI"/>
+                                                        <constraint firstAttribute="height" constant="12" id="8Is-tf-5TO"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -314,17 +326,19 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="9qk-Sm-uIa" secondAttribute="trailing" id="Fn3-Zk-l05"/>
-                                        <constraint firstItem="9qk-Sm-uIa" firstAttribute="leading" secondItem="C4g-fw-s3f" secondAttribute="leadingMargin" id="Lgs-HZ-Xze"/>
-                                        <constraint firstItem="9qk-Sm-uIa" firstAttribute="top" secondItem="C4g-fw-s3f" secondAttribute="topMargin" id="M3O-Is-MjQ"/>
-                                        <constraint firstItem="9qk-Sm-uIa" firstAttribute="centerY" secondItem="C4g-fw-s3f" secondAttribute="centerY" id="MIU-Yu-ZDs"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="9qk-Sm-uIa" secondAttribute="bottom" id="s4a-dv-jCd"/>
-                                        <constraint firstItem="9qk-Sm-uIa" firstAttribute="centerX" secondItem="C4g-fw-s3f" secondAttribute="centerX" id="x17-Xs-htf"/>
+                                        <constraint firstItem="b7F-q0-IaW" firstAttribute="leading" secondItem="C4g-fw-s3f" secondAttribute="leadingMargin" id="0Uf-vm-TGA"/>
+                                        <constraint firstItem="Wg5-Iu-VIa" firstAttribute="top" secondItem="C4g-fw-s3f" secondAttribute="topMargin" constant="13" id="DfV-gN-juN"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Wg5-Iu-VIa" secondAttribute="bottom" constant="13" id="Jsg-mT-UPq"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="b7F-q0-IaW" secondAttribute="bottom" constant="20" id="TYh-5v-k21"/>
+                                        <constraint firstItem="b7F-q0-IaW" firstAttribute="top" secondItem="C4g-fw-s3f" secondAttribute="topMargin" constant="20" id="fLQ-6q-KQi"/>
+                                        <constraint firstItem="Wg5-Iu-VIa" firstAttribute="leading" secondItem="b7F-q0-IaW" secondAttribute="trailing" constant="24" id="n3f-hl-yRi"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="lowerLabel" destination="9JJ-wn-Kpk" id="o5h-ip-LRr"/>
-                                    <outlet property="upperLabel" destination="45c-L1-HSQ" id="CpX-je-Pwp"/>
+                                    <outlet property="detailOneLabel" destination="9vC-9Y-FS8" id="txs-u7-k33"/>
+                                    <outlet property="detailThreeLabel" destination="oPw-C0-gxT" id="TqT-En-ceZ"/>
+                                    <outlet property="rankLabel" destination="b7F-q0-IaW" id="vOb-ED-UHt"/>
+                                    <outlet property="titleLabel" destination="Ruj-qP-4PV" id="UNK-gX-lKv"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -340,7 +354,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FHm-Li-JmT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1283" y="-691"/>
+            <point key="canvasLocation" x="-1284" y="-691.304347826087"/>
         </scene>
         <!--RTM-->
         <scene sceneID="dWw-ol-2gP">
