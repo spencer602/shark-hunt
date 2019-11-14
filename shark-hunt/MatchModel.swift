@@ -26,12 +26,28 @@ struct MatchModel: CustomStringConvertible {
         return p1Name
     }
     
+    private var p1Won: Bool {
+        return p1GamesWon == p1GamesNeeded
+    }
+    
+    private var dPoints: Int {
+        return p1Won ? p2PointsWagered : p1PointsWagered
+    }
+    
+    var p1Text: String {
+        return "\(p1Name): \(p1GamesWon)/\(p1GamesNeeded)  \(p1Won ? "+" : "-")\(dPoints)"
+    }
+    
+    var p2Text: String {
+        return "\(p2Name): \(p2GamesWon)/\(p2GamesNeeded)  \(p1Won ? "-" : "+")\(dPoints)"
+    }
+    
     var upperText: String {
-        return "\(p1Name): \(p1GamesWon)/\(p1GamesNeeded)"
+        return p1Won ? p1Text : p2Text
     }
     
     var lowerText: String {
-        return "\(p2Name): \(p2GamesWon)/\(p2GamesNeeded)"
+        return p1Won ? p2Text : p1Text
     }
     
 }
