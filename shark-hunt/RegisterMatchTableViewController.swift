@@ -14,7 +14,11 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
     var players = [PlayerModel]()
     var locations = [String]()
     
-    @IBOutlet weak var player1Picker: UIPickerView!
+    @IBOutlet weak var p1TextField: UITextField!
+    
+//    @IBOutlet weak var player1Picker: UIPickerView!
+    var player1Picker: UIPickerView!
+    
     @IBOutlet weak var player2Picker: UIPickerView!
     @IBOutlet weak var locationPicker: UIPickerView!
     
@@ -45,6 +49,8 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         
         dr = DataRetriever(withDelegate: self)
         
+        player1Picker = UIPickerView()
+        
         setUpSteppers()
         player1Picker.delegate = self
         player1Picker.dataSource = self
@@ -52,6 +58,31 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         player2Picker.dataSource = self
         locationPicker.delegate = self
         locationPicker.dataSource = self
+        p1TextField.inputView = player1Picker
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.sizeToFit()
+
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(donePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(donePicker))
+
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+
+        
+        p1TextField.inputAccessoryView = toolBar
+        
+        
+    }
+    
+    @objc func donePicker() {
+
+        p1TextField.resignFirstResponder()
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -73,6 +104,7 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         locations.sort() { $0 < $1 }
         locationPicker.reloadAllComponents()
     }
+    
 
     private func updateLabels() {
         p1GamesToWin.text = "Games to Win: \(Int(p1GamesToWinStepper.value))"
@@ -190,6 +222,10 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         if pickerView === player1Picker || pickerView === player2Picker { return players[row].name }
         else if pickerView === locationPicker { return locations[row] }
         else { return nil }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        p1TextField.text = players[row].name
     }
     
     @IBAction func p1GamesToWinChanged(_ sender: UIStepper) {
