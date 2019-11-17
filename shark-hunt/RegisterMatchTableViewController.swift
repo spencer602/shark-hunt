@@ -14,10 +14,18 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
     var players = [PlayerModel]()
     var locations = [String]()
     
-    @IBOutlet weak var player1Picker: UIPickerView!
-    @IBOutlet weak var player2Picker: UIPickerView!
-    @IBOutlet weak var locationPicker: UIPickerView!
+    @IBOutlet weak var p1TextField: UITextField!
+    @IBOutlet weak var p2TextField: UITextField!
+    @IBOutlet weak var locationTextField: UITextField!
     
+//    @IBOutlet weak var player1Picker: UIPickerView!
+    var playerPicker: UIPickerView!
+    var locationPicker: UIPickerView!
+    
+    var player1: PlayerModel?
+    var player2: PlayerModel?
+    var location: String?
+        
     @IBOutlet weak var p1GamesToWin: UILabel!
     @IBOutlet weak var p1Points: UILabel!
     
@@ -45,13 +53,45 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         
         dr = DataRetriever(withDelegate: self)
         
+        playerPicker = UIPickerView()
+        locationPicker = UIPickerView()
+        
         setUpSteppers()
-        player1Picker.delegate = self
-        player1Picker.dataSource = self
-        player2Picker.delegate = self
-        player2Picker.dataSource = self
+        playerPicker.delegate = self
+        playerPicker.dataSource = self
         locationPicker.delegate = self
         locationPicker.dataSource = self
+        
+        p1TextField.inputView = playerPicker
+        p2TextField.inputView = playerPicker
+        locationTextField.inputView = locationPicker
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.sizeToFit()
+
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(donePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(donePicker))
+
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+
+        p1TextField.inputAccessoryView = toolBar
+        p2TextField.inputAccessoryView = toolBar
+        locationTextField.inputAccessoryView = toolBar
+
+
+        
+    }
+    
+    @objc func donePicker() {
+        if p1TextField.isEditing { p1TextField.resignFirstResponder() }
+        else if p2TextField.isEditing { p2TextField.resignFirstResponder() }
+        else if locationTextField.isEditing { locationTextField.resignFirstResponder() }
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,8 +104,7 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
     func updatePlayerDataFromDataRetriever(withPlayerData playerData: [PlayerModel]) {
         self.players = playerData
         players.sort() { $0.name < $1.name }
-        player1Picker.reloadAllComponents()
-        player2Picker.reloadAllComponents()
+        playerPicker.reloadAllComponents()
     }
     
     func updateLocationNameDataFromDataRetriever(withLocationNameData locationNameData: [String]) {
@@ -73,6 +112,7 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         locations.sort() { $0 < $1 }
         locationPicker.reloadAllComponents()
     }
+    
 
     private func updateLabels() {
         p1GamesToWin.text = "Games to Win: \(Int(p1GamesToWinStepper.value))"
@@ -96,8 +136,8 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         //request.setValue("Powered by Swift!", forHTTPHeaderField: "X-Powered-By")
         
         let json: [String: Any] = [
-            "player1": players[player1Picker.selectedRow(inComponent: 0)].name,
-            "player2": players[player2Picker.selectedRow(inComponent: 0)].name,
+            "player1": player1?.name ?? "Error",
+            "player2": player2?.name ?? "Error",
             "playerOneGamesInput": Int(p1GamesToWinStepper.value),
             "playerTwoGamesInput": Int(p2GamesToWinStepper.value),
             "playerOnePointsInput": Int(p1PointsStepper.value),
@@ -181,15 +221,34 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView === player1Picker || pickerView === player2Picker { return players.count }
+        if pickerView === playerPicker { return players.count }
         else if pickerView === locationPicker { return locations.count }
         else { return 0 }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView === player1Picker || pickerView === player2Picker { return players[row].name }
+        if pickerView === playerPicker { return players[row].name }
         else if pickerView === locationPicker { return locations[row] }
         else { return nil }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView === playerPicker {
+            if p1TextField.isEditing {
+                p1TextField.text = players[row].name
+                player1 = players[row]
+            }
+            else if p2TextField.isEditing {
+                p2TextField.text = players[row].name
+                player2 = players[row]
+            }
+        }
+        else if pickerView === locationPicker {
+            if locationTextField.isEditing {
+                locationTextField.text = locations[row]
+                location = locations[row]
+            }
+        }
     }
     
     @IBAction func p1GamesToWinChanged(_ sender: UIStepper) {
@@ -259,7 +318,7 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
             present(dualWinnerAlert, animated: true, completion: nil)
         }
         // playing with yourself???
-        else if player1Picker.selectedRow(inComponent: 0) == player2Picker.selectedRow(inComponent: 0) {
+        else if player1 == player2 {
             let playingWithYourselfAlert = UIAlertController(
                 title: "Playing With Yourself?",
                 message: "With current input, it appears that you are playing against yourself. Please double check your input",
@@ -272,6 +331,48 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
 
             present(playingWithYourselfAlert, animated: true, completion: nil)
         }
+            
+        else if player1 == nil {
+            let playingWithYourselfAlert = UIAlertController(
+                title: "Player 1 Not Selected",
+                message: "Choose a player as Player 1",
+                preferredStyle: .alert)
+            
+            playingWithYourselfAlert.addAction(UIAlertAction(
+                title: "OK",
+                style: .cancel
+            ))
+
+            present(playingWithYourselfAlert, animated: true, completion: nil)
+        }
+            
+        else if player2 == nil {
+            let playingWithYourselfAlert = UIAlertController(
+                title: "Player 2 Not Selected",
+                message: "Choose a player as Player 2",
+                preferredStyle: .alert)
+            
+            playingWithYourselfAlert.addAction(UIAlertAction(
+                title: "OK",
+                style: .cancel
+            ))
+
+            present(playingWithYourselfAlert, animated: true, completion: nil)
+        }
+            
+        else if location == nil {
+           let playingWithYourselfAlert = UIAlertController(
+               title: "Location Not Selected",
+               message: "Choose the location where the match was played",
+               preferredStyle: .alert)
+           
+           playingWithYourselfAlert.addAction(UIAlertAction(
+               title: "OK",
+               style: .cancel
+           ))
+
+           present(playingWithYourselfAlert, animated: true, completion: nil)
+       }
         // valid data, go ahead and register the match
         else {
             registerMatch()
