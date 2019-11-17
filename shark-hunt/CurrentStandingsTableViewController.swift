@@ -65,4 +65,12 @@ class CurrentStandingsTableViewController: UITableViewController, DataRetrieverP
     // unused
     func updateMatchHistoryDataFromDataRetriever(withMatchHistoryData matchHistoryData: [MatchModel]) { }
     func updateLocationNameDataFromDataRetriever(withLocationNameData locationNameData: [String]) { }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? PersonalMatchHistoryViewController {
+            if let plyr = sender as? StandingsTableViewCell {
+                dest.player = listTableView.indexPathsForSelectedRows?.first.
+            }
+        }
+    }
 }

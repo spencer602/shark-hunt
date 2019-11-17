@@ -164,58 +164,6 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         task.resume()
     }
     
-    private func setUpSteppers() {
-        p1GamesToWinStepper.maximumValue = 9
-        p1GamesToWinStepper.minimumValue = 5
-        p1GamesToWinStepper.autorepeat = false
-        p1GamesToWinStepper.isContinuous = false
-        p1GamesToWinStepper.value = 5
-        
-        p2GamesToWinStepper.maximumValue = 9
-        p2GamesToWinStepper.minimumValue = 5
-        p2GamesToWinStepper.autorepeat = false
-        p2GamesToWinStepper.isContinuous = false
-        p2GamesToWinStepper.value = 5
-        
-        p1PointsStepper.maximumValue = 25
-        p1PointsStepper.minimumValue = 10
-        p1PointsStepper.autorepeat = false
-        p1PointsStepper.isContinuous = false
-        p1PointsStepper.value = 10
-        p1PointsStepper.stepValue = 5
-        
-        p2PointsStepper.maximumValue = 25
-        p2PointsStepper.minimumValue = 10
-        p2PointsStepper.autorepeat = false
-        p2PointsStepper.isContinuous = false
-        p2PointsStepper.value = 10
-        p2PointsStepper.stepValue = 5
-        
-        p1GamesWonStepper.maximumValue = p1GamesToWinStepper.value
-        p1GamesWonStepper.minimumValue = 0
-        p1GamesWonStepper.autorepeat = false
-        p1GamesWonStepper.isContinuous = false
-        p1GamesWonStepper.value = 0
-        
-        p1EROsStepper.maximumValue = p1GamesWonStepper.value
-        p1EROsStepper.minimumValue = 0
-        p1EROsStepper.autorepeat = false
-        p1EROsStepper.isContinuous = false
-        p1EROsStepper.value = 0
-        
-        p2GamesWonStepper.maximumValue = p2GamesToWinStepper.value
-        p2GamesWonStepper.minimumValue = 0
-        p2GamesWonStepper.autorepeat = false
-        p2GamesWonStepper.isContinuous = false
-        p2GamesWonStepper.value = 0
-        
-        p2EROsStepper.maximumValue = p2GamesWonStepper.value
-        p2EROsStepper.minimumValue = 0
-        p2EROsStepper.autorepeat = false
-        p2EROsStepper.isContinuous = false
-        p2EROsStepper.value = 0
-    }
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -377,6 +325,58 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         else {
             registerMatch()
         }
+    }
+    
+    private func setUpSteppers() {
+        p1GamesToWinStepper.maximumValue = 9
+        p1GamesToWinStepper.minimumValue = 5
+        p1GamesToWinStepper.autorepeat = false
+        p1GamesToWinStepper.isContinuous = false
+        p1GamesToWinStepper.value = 5
+        
+        p2GamesToWinStepper.maximumValue = 9
+        p2GamesToWinStepper.minimumValue = 5
+        p2GamesToWinStepper.autorepeat = false
+        p2GamesToWinStepper.isContinuous = false
+        p2GamesToWinStepper.value = 5
+        
+        p1PointsStepper.maximumValue = 25
+        p1PointsStepper.minimumValue = 10
+        p1PointsStepper.autorepeat = false
+        p1PointsStepper.isContinuous = false
+        p1PointsStepper.value = 10
+        p1PointsStepper.stepValue = 5
+        
+        p2PointsStepper.maximumValue = 25
+        p2PointsStepper.minimumValue = 10
+        p2PointsStepper.autorepeat = false
+        p2PointsStepper.isContinuous = false
+        p2PointsStepper.value = 10
+        p2PointsStepper.stepValue = 5
+        
+        p1GamesWonStepper.maximumValue = p1GamesToWinStepper.value
+        p1GamesWonStepper.minimumValue = 0
+        p1GamesWonStepper.autorepeat = false
+        p1GamesWonStepper.isContinuous = false
+        p1GamesWonStepper.value = 0
+        
+        p1EROsStepper.maximumValue = p1GamesWonStepper.value
+        p1EROsStepper.minimumValue = 0
+        p1EROsStepper.autorepeat = false
+        p1EROsStepper.isContinuous = false
+        p1EROsStepper.value = 0
+        
+        p2GamesWonStepper.maximumValue = p2GamesToWinStepper.value
+        p2GamesWonStepper.minimumValue = 0
+        p2GamesWonStepper.autorepeat = false
+        p2GamesWonStepper.isContinuous = false
+        p2GamesWonStepper.value = 0
+        
+        p2EROsStepper.maximumValue = p2GamesWonStepper.value
+        p2EROsStepper.minimumValue = 0
+        p2EROsStepper.autorepeat = false
+        p2EROsStepper.isContinuous = false
+        p2EROsStepper.value = 0
     }
     
     // unused
