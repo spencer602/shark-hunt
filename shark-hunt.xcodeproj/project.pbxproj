@@ -24,6 +24,7 @@
 		09B6E234237B19D3002A8C83 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B6E233237B19D3002A8C83 /* SettingsViewController.swift */; };
 		09E5B632237DC82E0081E5C7 /* StandingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E5B631237DC82E0081E5C7 /* StandingsTableViewCell.swift */; };
 		09E5B634237DCCCF0081E5C7 /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E5B633237DCCCF0081E5C7 /* UtilityExtensions.swift */; };
+		09FA180F2381C65800A5D031 /* PersonalMatchHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FA180E2381C65800A5D031 /* PersonalMatchHistoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		09B6E233237B19D3002A8C83 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		09E5B631237DC82E0081E5C7 /* StandingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsTableViewCell.swift; sourceTree = "<group>"; };
 		09E5B633237DCCCF0081E5C7 /* UtilityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityExtensions.swift; sourceTree = "<group>"; };
+		09FA180E2381C65800A5D031 /* PersonalMatchHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalMatchHistoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				09B6E233237B19D3002A8C83 /* SettingsViewController.swift */,
 				090C5C152379A7A90095E911 /* RegisterMatchViewController.swift */,
 				09B6E231237A64C8002A8C83 /* RegisterMatchTableViewController.swift */,
+				09FA180E2381C65800A5D031 /* PersonalMatchHistoryViewController.swift */,
 				090C5C13237925B00095E911 /* CurrentStandingsTableViewController.swift */,
 				091D8B4723790BBE00F6EC36 /* MatchTableViewCell.swift */,
 				09E5B631237DC82E0081E5C7 /* StandingsTableViewCell.swift */,
@@ -184,6 +187,7 @@
 				09E5B634237DCCCF0081E5C7 /* UtilityExtensions.swift in Sources */,
 				09B6E234237B19D3002A8C83 /* SettingsViewController.swift in Sources */,
 				09B6E230237A28FB002A8C83 /* Settings.swift in Sources */,
+				09FA180F2381C65800A5D031 /* PersonalMatchHistoryViewController.swift in Sources */,
 				091D8B402375121200F6EC36 /* DataRetriever.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
