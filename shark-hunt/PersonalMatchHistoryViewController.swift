@@ -10,21 +10,31 @@ import UIKit
 
 class PersonalMatchHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DataRetrieverProtocol {
     
+    var player: PlayerModel!
+    var matches = [MatchModel]()
+    var dr: DataRetriever?
+    
     @IBOutlet weak var listTableView: UITableView!
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // start the process of downloading match history data, result of the download will be passed with delegate call to updateMatchHistoryDataFromDataRetriever(withMatchHistoryData matchHistoryData)
+        dr?.downloadPersonalMatchHistory(withPlayerID: player.id)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        dr = DataRetriever(withDelegate: self)
+        listTableView.delegate = self
+        listTableView.dataSource = self
+    }
+    
+    // delegate method, called from dataRetriever, gets the matches data
     func updateMatchHistoryDataFromDataRetriever(withMatchHistoryData matchHistoryData: [MatchModel]) {
-        matches = matchHistoryData
-        
-        matches = matches.filter {
-            $0.p1Name == player.name || $0.p2Name == player.name
-        }
-        
+        //filter the matches to only those with the player involved
+        matches = matchHistoryData.filter { $0.p1Name == player.name || $0.p2Name == player.name }
         listTableView.reloadData()
-        
-        print(matches.count)
-        
-        //print("upateMatchHistory from data retriever")
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,60 +42,20 @@ class PersonalMatchHistoryViewController: UIViewController, UITableViewDelegate,
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Retrieve cell
-        let cellIdentifier: String = "BasicMatchHistoryCell"
+        let cellIdentifier: String = "BasicMatchHistoryCell" // the only prototype cell in the table
         let myCell: UITableViewCell = listTableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
 
         if let myMatchCell = myCell as? MatchTableViewCell {
-           let item = matches[indexPath.row]
-           
-            print(item.p1Name)
+            let item = matches[indexPath.row]
             
-           myMatchCell.upperLabel.text = item.upperText
-           myMatchCell.lowerLabel.text = item.lowerText
+            // this ensures that the upperLabel displays the winner and the lowerLabel displays the loser
+            myMatchCell.upperLabel.text = item.p1Won ? item.p1Text : item.p2Text
+            myMatchCell.lowerLabel.text = item.p1Won ? item.p2Text : item.p1Text
         }
         return myCell
     }
     
-    
-    var player: PlayerModel!
-    var matches = [MatchModel]()
-    
-    var dr: DataRetriever?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        dr = DataRetriever(withDelegate: self)
-        listTableView.delegate = self
-        listTableView.dataSource = self
-
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        dr?.downloadPersonalMatchHistory(withPlayerID: player.id)
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    func updatePlayerDataFromDataRetriever(withPlayerData playerData: [PlayerModel]) {
-        
-    }
-    
-    func updateLocationNameDataFromDataRetriever(withLocationNameData locationNameData: [String]) {
-        
-    }
-
+    // unused delegate methods
+    func updatePlayerDataFromDataRetriever(withPlayerData playerData: [PlayerModel]) { }
+    func updateLocationNameDataFromDataRetriever(withLocationNameData locationNameData: [String]) { }
 }

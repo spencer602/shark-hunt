@@ -45,8 +45,8 @@ class MatchHistoryViewController: UIViewController, DataRetrieverProtocol, UITab
         if let myMatchCell = myCell as? MatchTableViewCell {
             let item = matches[indexPath.row]
             
-            myMatchCell.upperLabel.text = item.upperText
-            myMatchCell.lowerLabel.text = item.lowerText
+            myMatchCell.upperLabel.text = item.p1Won ? item.p1Text : item.p2Text
+            myMatchCell.lowerLabel.text = item.p1Won ? item.p2Text : item.p1Text
         }
         return myCell
     }
