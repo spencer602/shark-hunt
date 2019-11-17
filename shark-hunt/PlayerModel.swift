@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PlayerModel: CustomStringConvertible {
+struct PlayerModel: CustomStringConvertible, Equatable {
     
     var id: Int
     var name: String
@@ -18,6 +18,10 @@ struct PlayerModel: CustomStringConvertible {
     var eros: Int
     var matchesPlayed: Int
     var matchesWon: Int
+    
+    static func == (lhs: PlayerModel, rhs: PlayerModel) -> Bool {
+        return lhs.id == rhs.id
+    }
     
     var description: String {
         return "Name: \(name)"
