@@ -69,7 +69,10 @@ class CurrentStandingsTableViewController: UITableViewController, DataRetrieverP
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? PersonalMatchHistoryViewController {
             if let plyr = sender as? StandingsTableViewCell {
-                dest.player = listTableView.indexPathsForSelectedRows?.first.
+                if let selectedRow = listTableView.indexPathForSelectedRow {
+                    dest.player = players[selectedRow.row]
+                }
+                
             }
         }
     }

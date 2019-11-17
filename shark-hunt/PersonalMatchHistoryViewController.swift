@@ -10,8 +10,21 @@ import UIKit
 
 class PersonalMatchHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DataRetrieverProtocol {
     
+    @IBOutlet weak var listTableView: UITableView!
+    
     func updateMatchHistoryDataFromDataRetriever(withMatchHistoryData matchHistoryData: [MatchModel]) {
         matches = matchHistoryData
+        
+        matches = matches.filter {
+            $0.p1Name == player.name || $0.p2Name == player.name
+        }
+        
+        listTableView.reloadData()
+        
+        print(matches.count)
+        
+        //print("upateMatchHistory from data retriever")
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -21,11 +34,13 @@ class PersonalMatchHistoryViewController: UIViewController, UITableViewDelegate,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Retrieve cell
         let cellIdentifier: String = "BasicMatchHistoryCell"
-        let myCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
+        let myCell: UITableViewCell = listTableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
 
         if let myMatchCell = myCell as? MatchTableViewCell {
            let item = matches[indexPath.row]
            
+            print(item.p1Name)
+            
            myMatchCell.upperLabel.text = item.upperText
            myMatchCell.lowerLabel.text = item.lowerText
         }
@@ -42,6 +57,8 @@ class PersonalMatchHistoryViewController: UIViewController, UITableViewDelegate,
         super.viewDidLoad()
         
         dr = DataRetriever(withDelegate: self)
+        listTableView.delegate = self
+        listTableView.dataSource = self
 
         // Do any additional setup after loading the view.
     }
