@@ -16,15 +16,16 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
     
     @IBOutlet weak var p1TextField: UITextField!
     @IBOutlet weak var p2TextField: UITextField!
+    @IBOutlet weak var locationTextField: UITextField!
     
 //    @IBOutlet weak var player1Picker: UIPickerView!
     var playerPicker: UIPickerView!
+    var locationPicker: UIPickerView!
     
     var player1: PlayerModel?
     var player2: PlayerModel?
-    
-    @IBOutlet weak var locationPicker: UIPickerView!
-    
+    var location: String?
+        
     @IBOutlet weak var p1GamesToWin: UILabel!
     @IBOutlet weak var p1Points: UILabel!
     
@@ -53,6 +54,7 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         dr = DataRetriever(withDelegate: self)
         
         playerPicker = UIPickerView()
+        locationPicker = UIPickerView()
         
         setUpSteppers()
         playerPicker.delegate = self
@@ -62,6 +64,7 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
         
         p1TextField.inputView = playerPicker
         p2TextField.inputView = playerPicker
+        locationTextField.inputView = locationPicker
         
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
@@ -78,6 +81,7 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
 
         p1TextField.inputAccessoryView = toolBar
         p2TextField.inputAccessoryView = toolBar
+        locationTextField.inputAccessoryView = toolBar
 
 
         
@@ -86,6 +90,7 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
     @objc func donePicker() {
         if p1TextField.isEditing { p1TextField.resignFirstResponder() }
         else if p2TextField.isEditing { p2TextField.resignFirstResponder() }
+        else if locationTextField.isEditing { locationTextField.resignFirstResponder() }
 
     }
     
@@ -238,6 +243,12 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
                 player2 = players[row]
             }
         }
+        else if pickerView === locationPicker {
+            if locationTextField.isEditing {
+                locationTextField.text = locations[row]
+                location = locations[row]
+            }
+        }
     }
     
     @IBAction func p1GamesToWinChanged(_ sender: UIStepper) {
@@ -348,6 +359,20 @@ class RegisterMatchTableViewController: UITableViewController, UIPickerViewDeleg
 
             present(playingWithYourselfAlert, animated: true, completion: nil)
         }
+            
+        else if location == nil {
+           let playingWithYourselfAlert = UIAlertController(
+               title: "Location Not Selected",
+               message: "Choose the location where the match was played",
+               preferredStyle: .alert)
+           
+           playingWithYourselfAlert.addAction(UIAlertAction(
+               title: "OK",
+               style: .cancel
+           ))
+
+           present(playingWithYourselfAlert, animated: true, completion: nil)
+       }
         // valid data, go ahead and register the match
         else {
             registerMatch()
