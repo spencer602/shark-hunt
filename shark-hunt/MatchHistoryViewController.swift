@@ -40,6 +40,7 @@ class MatchHistoryViewController: UIViewController, DataRetrieverProtocol, UITab
         return matches.count
     }
     
+    // TODO: add date and time display for when the match was played
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Retrieve cell
         let cellIdentifier: String = "BasicMatchHistoryCell"
