@@ -8,21 +8,11 @@
 
 import UIKit
 
+/// a class for displaying details of a match in a table view cell
 class MatchTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
+    /// outlet to lowerLabel
     @IBOutlet weak var lowerLabel: UILabel!
+    /// outlet to upperLabel
     @IBOutlet weak var upperLabel: UILabel!
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-
 }

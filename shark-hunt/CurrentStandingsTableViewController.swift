@@ -8,40 +8,44 @@
 
 import UIKit
 
+/// a class for displaying the current standings
 class CurrentStandingsTableViewController: UITableViewController, DataRetrieverProtocol {
     
-    var dr: DataRetriever?
-    var players = [PlayerModel]()
+    private var dr: DataRetriever?
+    private var players = [PlayerModel]()
 
-    @IBOutlet var listTableView: UITableView!
+    @IBOutlet private var listTableView: UITableView!
     
-    func updatePlayerDataFromDataRetriever(withPlayerData playerData: [PlayerModel]) {
-        self.players = playerData
-        listTableView.reloadData()
-    }
-    
+    // MARK: - View Controller Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         dr = DataRetriever(withDelegate: self)
-        
         self.listTableView.delegate = self
         self.listTableView.dataSource = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        // initial download of the player data
         dr?.downloadPlayerData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? PersonalMatchHistoryViewController {
+            if let _ = sender as? StandingsTableViewCell {
+                if let selectedRow = listTableView.indexPathForSelectedRow {
+                    dest.prepareForBeingSeguedTo(withPlayer: players[selectedRow.row])
+                }
+            }
+        }
     }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         players.count
     }
 
@@ -53,27 +57,22 @@ class CurrentStandingsTableViewController: UITableViewController, DataRetrieverP
             let item = players[indexPath.row]
             // Get references to labels of cell
             
-            myStandingCell.rankLabel.text = String(indexPath.row + 1)
-            myStandingCell.titleLabel.text = String(item.points) + "   " + item.name
-            myStandingCell.detailOneLabel.text = "Matches: " + (item.matchesPlayed != 0 ? String((100 * Double(item.matchesWon)/Double(item.matchesPlayed)).easyToReadNotation(withDecimalPlaces: 1)) : "NA") + "% (\(item.matchesWon)/\(item.matchesPlayed))"
-            myStandingCell.detailThreeLabel.text = "Games: " + (item.gamesPlayed != 0 ? String((100 * Double(item.gamesWon)/Double(item.gamesPlayed)).easyToReadNotation(withDecimalPlaces: 1)) : "NA") + "% (\(item.gamesWon)/\(item.gamesPlayed))  -  ERO: \(item.eros)"
+            myStandingCell.setRankLabel(withString: String(indexPath.row + 1))
+            myStandingCell.setTitleLabel(withString: String(item.points) + "   " + item.name)
+            myStandingCell.setDetailOneLabel(withString: "Matches: " + (item.matchesPlayed != 0 ? String((100 * Double(item.matchesWon)/Double(item.matchesPlayed)).easyToReadNotation(withDecimalPlaces: 1)) : "NA") + "% (\(item.matchesWon)/\(item.matchesPlayed))")
+            myStandingCell.setDetailTwoLabel(withString: "Games: " + (item.gamesPlayed != 0 ? String((100 * Double(item.gamesWon)/Double(item.gamesPlayed)).easyToReadNotation(withDecimalPlaces: 1)) : "NA") + "% (\(item.gamesWon)/\(item.gamesPlayed))  -  ERO: \(item.eros)")
         }
 
         return cell
     }
-
-    // unused
+    
+    // MARK: - Delegate methods for DataRetriever
+    func updatePlayerDataFromDataRetriever(withPlayerData playerData: [PlayerModel]) {
+        self.players = playerData
+        listTableView.reloadData()
+    }
+    
+    // unused delegate methods from DataRetriever
     func updateMatchHistoryDataFromDataRetriever(withMatchHistoryData matchHistoryData: [MatchModel]) { }
     func updateLocationNameDataFromDataRetriever(withLocationNameData locationNameData: [String]) { }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? PersonalMatchHistoryViewController {
-            if let plyr = sender as? StandingsTableViewCell {
-                if let selectedRow = listTableView.indexPathForSelectedRow {
-                    dest.player = players[selectedRow.row]
-                }
-                
-            }
-        }
-    }
 }

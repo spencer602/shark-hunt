@@ -185,7 +185,7 @@
             <objects>
                 <viewController id="I4L-PY-4Jb" customClass="MatchHistoryViewController" customModule="shark_hunt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L4x-KM-zKX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="prO-VO-7ww">
@@ -335,7 +335,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="detailOneLabel" destination="9vC-9Y-FS8" id="txs-u7-k33"/>
-                                    <outlet property="detailThreeLabel" destination="oPw-C0-gxT" id="TqT-En-ceZ"/>
+                                    <outlet property="detailTwoLabel" destination="oPw-C0-gxT" id="TqT-En-ceZ"/>
                                     <outlet property="rankLabel" destination="b7F-q0-IaW" id="vOb-ED-UHt"/>
                                     <outlet property="titleLabel" destination="Ruj-qP-4PV" id="UNK-gX-lKv"/>
                                     <segue destination="NVa-dd-rzu" kind="show" id="Qls-2p-Sqs"/>
@@ -361,7 +361,7 @@
             <objects>
                 <tableViewController id="iAI-Zl-ugb" customClass="RegisterMatchTableViewController" customModule="shark_hunt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" id="I7B-e7-Zed">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
@@ -686,11 +686,11 @@
                                         <rect key="frame" x="0.0" y="764" width="375" height="53"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cqq-Rv-meu" id="hXE-Zy-a5B">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="53"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNq-IG-H3W">
-                                                    <rect key="frame" x="24" y="10" width="327" height="33"/>
+                                                    <rect key="frame" x="24" y="10" width="552" height="33"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <state key="normal" title="Register Match"/>
                                                     <connections>
@@ -746,7 +746,7 @@
             <objects>
                 <tableViewController id="IGt-Sy-oVj" userLabel="Settings" customClass="SettingsViewController" customModule="shark_hunt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IAE-KA-ezj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
@@ -878,7 +878,7 @@
                     <tabBarItem key="tabBarItem" title="Current Standings" id="C92-7m-kAf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8ZR-gr-MFk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
