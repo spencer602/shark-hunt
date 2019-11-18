@@ -12,21 +12,21 @@ import Foundation
 struct PlayerModel: CustomStringConvertible, Equatable {
     
     /// the unique identifier
-    var id: Int
+    let id: Int
     /// the player name
-    var name: String
+    let name: String
     /// the players current points
-    var points: Int
+    let points: Int
     /// the games that have been played by the player
-    var gamesPlayed: Int
+    let gamesPlayed: Int
     /// the games that have been won by the player
-    var gamesWon: Int
+    let gamesWon: Int
     /// the number of eros the player has completed
-    var eros: Int
+    let eros: Int
     /// the number of matches the player has played
-    var matchesPlayed: Int
+    let matchesPlayed: Int
     /// the number of matches the player has won
-    var matchesWon: Int
+    let matchesWon: Int
     
     /**
     Returns the equality of two players by comparing the equality of their ids

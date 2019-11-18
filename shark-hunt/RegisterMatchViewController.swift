@@ -8,11 +8,11 @@
 
 import UIKit
 
+/// deprecated, RegisterMatchTableViewController is used instead
 class RegisterMatchViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, DataRetrieverProtocol {
     
     var dr: DataRetriever?
     var players = [PlayerModel]()
-    
     
     @IBOutlet weak var p1Picker: UIPickerView!
     @IBOutlet weak var p2Picker: UIPickerView!
