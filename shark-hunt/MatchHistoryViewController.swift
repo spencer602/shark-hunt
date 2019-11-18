@@ -36,6 +36,7 @@ class MatchHistoryViewController: UIViewController, DataRetrieverProtocol, UITab
     }
     
     // MARK: - TableView data source methods
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return matches.count
     }
