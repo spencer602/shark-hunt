@@ -204,7 +204,7 @@ class DataRetriever: NSObject, URLSessionDataDelegate {
                     {
                         
                         // if the data retrieval suceeds, create a new MatchModel
-                        let match = MatchModel(p1Name: p1Name, p2Name: p2Name, p1PointsWagered: Int(p1PointsWagered)!, p2PointsWagered: Int(p2PointsWagered)!, p1GamesNeeded: Int(p1GamesNeeded)!, p2GamesNeeded: Int(p2GamesNeeded)!, p1GamesWon: Int(p1GamesWon)!, p2GamesWon: Int(p2GamesWon)!, p1ERO: Int(p1ERO)!, p2ERO: Int(p2ERO)!, dateAndTime: Date(), locationPlayed: locationPlayed)
+                        let match = MatchModel(p1Name: p1Name, p2Name: p2Name, p1PointsWagered: Int(p1PointsWagered)!, p2PointsWagered: Int(p2PointsWagered)!, p1GamesNeeded: Int(p1GamesNeeded)!, p2GamesNeeded: Int(p2GamesNeeded)!, p1GamesWon: Int(p1GamesWon)!, p2GamesWon: Int(p2GamesWon)!, p1ERO: Int(p1ERO)!, p2ERO: Int(p2ERO)!, dateAndTime: Date(from: dateAndTime), locationPlayed: locationPlayed)
                         // append the match to the list of matches
                         allMatches.append(match)
                     }
