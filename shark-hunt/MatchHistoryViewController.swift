@@ -50,9 +50,16 @@ class MatchHistoryViewController: UIViewController, DataRetrieverProtocol, UITab
         if let myMatchCell = myCell as? MatchTableViewCell {
             let item = matches[indexPath.row]
             
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .medium
+            dateFormatter.locale = Locale(identifier: "en_US")
+            
+            myMatchCell.dateAndTimeLabel.text = dateFormatter.string(from: item.dateAndTime)
+            
             // this makes sure the winning player is displayed in the upper label
-            myMatchCell.upperLabel.text = item.p1Won ? item.p1Text : item.p2Text
-            myMatchCell.lowerLabel.text = item.p1Won ? item.p2Text : item.p1Text
+            myMatchCell.winningPlayerLabel.text = item.p1Won ? item.p1Text : item.p2Text
+            myMatchCell.losingPlayerLabel.text = item.p1Won ? item.p2Text : item.p1Text
         }
         return myCell
     }

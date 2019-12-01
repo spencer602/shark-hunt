@@ -133,3 +133,18 @@ extension Int {
         return newValue
     }
 }
+
+extension Date {
+    
+    //2019-11-15 14:02:05
+    init(from ISODateString: String) {
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        let date = dateFormatter.date(from: ISODateString)!
+        
+        self = date
+    }
+    
+}

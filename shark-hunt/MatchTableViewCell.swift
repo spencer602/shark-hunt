@@ -10,9 +10,7 @@ import UIKit
 
 /// a class for displaying details of a match in a table view cell
 class MatchTableViewCell: UITableViewCell {
-
-    /// outlet to lowerLabel
-    @IBOutlet weak var lowerLabel: UILabel!
-    /// outlet to upperLabel
-    @IBOutlet weak var upperLabel: UILabel!
+    @IBOutlet weak var losingPlayerLabel: UILabel!
+    @IBOutlet weak var winningPlayerLabel: UILabel!
+    @IBOutlet weak var dateAndTimeLabel: UILabel!
 }
