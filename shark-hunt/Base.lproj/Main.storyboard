@@ -180,7 +180,7 @@
             </objects>
             <point key="canvasLocation" x="-2085.5999999999999" y="532.0839580209896"/>
         </scene>
-        <!--Match History-->
+        <!--History-->
         <scene sceneID="eY7-Bo-Iin">
             <objects>
                 <viewController id="I4L-PY-4Jb" customClass="MatchHistoryViewController" customModule="shark_hunt" customModuleProvider="target" sceneMemberID="viewController">
@@ -254,7 +254,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vz6-GO-LkK"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Match History" id="DgQ-W4-4xM"/>
+                    <tabBarItem key="tabBarItem" title="History" id="DgQ-W4-4xM"/>
                     <connections>
                         <outlet property="listTableView" destination="prO-VO-7ww" id="cbF-Tj-39H"/>
                     </connections>
@@ -276,7 +276,6 @@
                         <segue destination="I4L-PY-4Jb" kind="relationship" relationship="viewControllers" id="if8-kp-Phg"/>
                         <segue destination="cIq-ot-8Zv" kind="relationship" relationship="viewControllers" id="HAy-MJ-Cwx"/>
                         <segue destination="iAI-Zl-ugb" kind="relationship" relationship="viewControllers" id="cnF-cR-L8G"/>
-                        <segue destination="IGt-Sy-oVj" kind="relationship" relationship="viewControllers" id="pHE-uB-HOC"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OiD-ly-NCz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -364,7 +363,7 @@
             </objects>
             <point key="canvasLocation" x="-344.80000000000001" y="-691.304347826087"/>
         </scene>
-        <!--RTM-->
+        <!--Register-->
         <scene sceneID="dWw-ol-2gP">
             <objects>
                 <tableViewController id="iAI-Zl-ugb" customClass="RegisterMatchTableViewController" customModule="shark_hunt" customModuleProvider="target" sceneMemberID="viewController">
@@ -722,7 +721,7 @@
                             <outlet property="delegate" destination="iAI-Zl-ugb" id="YjX-m0-3az"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="RTM" id="Kyg-OY-ZjG"/>
+                    <tabBarItem key="tabBarItem" title="Register" id="Kyg-OY-ZjG"/>
                     <connections>
                         <outlet property="locationTextField" destination="SyV-eF-pKc" id="xfA-ey-kdP"/>
                         <outlet property="p1EROs" destination="a2f-G6-ttw" id="00c-ry-l6Y"/>
@@ -887,11 +886,11 @@
             </objects>
             <point key="canvasLocation" x="548" y="-1299.400299850075"/>
         </scene>
-        <!--Current Standings-->
+        <!--Standings-->
         <scene sceneID="FG2-T0-hum">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cIq-ot-8Zv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Current Standings" id="C92-7m-kAf"/>
+                    <tabBarItem key="tabBarItem" title="Standings" id="C92-7m-kAf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8ZR-gr-MFk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
