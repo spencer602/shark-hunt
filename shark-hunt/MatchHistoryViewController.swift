@@ -50,6 +50,7 @@ class MatchHistoryViewController: UIViewController, DataRetrieverProtocol, UITab
         if let myMatchCell = myCell as? MatchTableViewCell {
             let item = matches[indexPath.row]
             
+            // format the date
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
             dateFormatter.timeStyle = .medium
