@@ -136,7 +136,13 @@ extension Int {
 
 extension Date {
     
-    //2019-11-15 14:02:05
+    /**
+     initializes a Date from a string representing a date in this format: 2019-11-15 14:02:05
+     
+     - Parameter ISODateString: the string representing the date, in this format: 2019-11-15 14:02:05
+     
+     - Note:This  might be useful if the string is formatted in SQL, and then encoded in JSON format
+     */
     init(from ISODateString: String) {
 
         let dateFormatter = DateFormatter()
