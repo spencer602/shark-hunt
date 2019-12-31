@@ -30,7 +30,7 @@
 /* Begin PBXFileReference section */
 		090C5C13237925B00095E911 /* CurrentStandingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentStandingsTableViewController.swift; sourceTree = "<group>"; };
 		090C5C152379A7A90095E911 /* RegisterMatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMatchViewController.swift; sourceTree = "<group>"; };
-		091D8B242374ECEB00F6EC36 /* shark-hunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "shark-hunt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		091D8B242374ECEB00F6EC36 /* Shark Hunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shark Hunt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		091D8B272374ECEB00F6EC36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		091D8B292374ECEB00F6EC36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		091D8B2E2374ECEB00F6EC36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 		091D8B252374ECEB00F6EC36 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				091D8B242374ECEB00F6EC36 /* shark-hunt.app */,
+				091D8B242374ECEB00F6EC36 /* Shark Hunt.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -106,9 +106,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		091D8B232374ECEB00F6EC36 /* shark-hunt */ = {
+		091D8B232374ECEB00F6EC36 /* Shark Hunt */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 091D8B382374ECEC00F6EC36 /* Build configuration list for PBXNativeTarget "shark-hunt" */;
+			buildConfigurationList = 091D8B382374ECEC00F6EC36 /* Build configuration list for PBXNativeTarget "Shark Hunt" */;
 			buildPhases = (
 				091D8B202374ECEB00F6EC36 /* Sources */,
 				091D8B212374ECEB00F6EC36 /* Frameworks */,
@@ -118,9 +118,9 @@
 			);
 			dependencies = (
 			);
-			name = "shark-hunt";
+			name = "Shark Hunt";
 			productName = "shark-hunt";
-			productReference = 091D8B242374ECEB00F6EC36 /* shark-hunt.app */;
+			productReference = 091D8B242374ECEB00F6EC36 /* Shark Hunt.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -138,7 +138,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 091D8B1F2374ECEB00F6EC36 /* Build configuration list for PBXProject "shark-hunt" */;
+			buildConfigurationList = 091D8B1F2374ECEB00F6EC36 /* Build configuration list for PBXProject "Shark Hunt" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -151,7 +151,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				091D8B232374ECEB00F6EC36 /* shark-hunt */,
+				091D8B232374ECEB00F6EC36 /* Shark Hunt */,
 			);
 		};
 /* End PBXProject section */
@@ -335,12 +335,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2MQ4939U5K;
 				INFOPLIST_FILE = "shark-hunt/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com-SpencerDeBuf-Stanford.shark-hunt";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Shark Hunt";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -353,12 +354,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2MQ4939U5K;
 				INFOPLIST_FILE = "shark-hunt/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com-SpencerDeBuf-Stanford.shark-hunt";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Shark Hunt";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -367,7 +369,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		091D8B1F2374ECEB00F6EC36 /* Build configuration list for PBXProject "shark-hunt" */ = {
+		091D8B1F2374ECEB00F6EC36 /* Build configuration list for PBXProject "Shark Hunt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				091D8B362374ECEC00F6EC36 /* Debug */,
@@ -376,7 +378,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		091D8B382374ECEC00F6EC36 /* Build configuration list for PBXNativeTarget "shark-hunt" */ = {
+		091D8B382374ECEC00F6EC36 /* Build configuration list for PBXNativeTarget "Shark Hunt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				091D8B392374ECEC00F6EC36 /* Debug */,
