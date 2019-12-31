@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FZi-5F-MUy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FZi-5F-MUy">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,7 +11,7 @@
         <!--Register Match-->
         <scene sceneID="zqb-Hc-oEZ">
             <objects>
-                <viewController id="dez-RW-rLd" customClass="RegisterMatchViewController" customModule="shark_hunt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dez-RW-rLd" customClass="RegisterMatchViewController" customModule="Shark_Hunt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HOE-JW-ffw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -183,7 +184,7 @@
         <!--History-->
         <scene sceneID="eY7-Bo-Iin">
             <objects>
-                <viewController id="I4L-PY-4Jb" customClass="MatchHistoryViewController" customModule="shark_hunt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="I4L-PY-4Jb" customClass="MatchHistoryViewController" customModule="Shark_Hunt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L4x-KM-zKX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -192,7 +193,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicMatchHistoryCell" rowHeight="115" id="mjf-yo-fhu" customClass="MatchTableViewCell" customModule="shark_hunt" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicMatchHistoryCell" rowHeight="115" id="mjf-yo-fhu" customClass="MatchTableViewCell" customModule="Shark_Hunt" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mjf-yo-fhu" id="Xei-bD-qxM">
@@ -273,8 +274,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="I4L-PY-4Jb" kind="relationship" relationship="viewControllers" id="if8-kp-Phg"/>
                         <segue destination="cIq-ot-8Zv" kind="relationship" relationship="viewControllers" id="HAy-MJ-Cwx"/>
+                        <segue destination="I4L-PY-4Jb" kind="relationship" relationship="viewControllers" id="if8-kp-Phg"/>
                         <segue destination="iAI-Zl-ugb" kind="relationship" relationship="viewControllers" id="cnF-cR-L8G"/>
                     </connections>
                 </tabBarController>
@@ -285,13 +286,13 @@
         <!--Current Standings Table View Controller-->
         <scene sceneID="l93-Xo-eZS">
             <objects>
-                <tableViewController id="uI2-zZ-NEd" customClass="CurrentStandingsTableViewController" customModule="shark_hunt" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="uI2-zZ-NEd" customClass="CurrentStandingsTableViewController" customModule="Shark_Hunt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="h1x-3E-wdY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StandingsCell" rowHeight="115" id="SIP-VJ-c4K" customClass="StandingsTableViewCell" customModule="shark_hunt" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StandingsCell" rowHeight="115" id="SIP-VJ-c4K" customClass="StandingsTableViewCell" customModule="Shark_Hunt" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="115"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SIP-VJ-c4K" id="C4g-fw-s3f">
@@ -366,7 +367,7 @@
         <!--Register-->
         <scene sceneID="dWw-ol-2gP">
             <objects>
-                <tableViewController id="iAI-Zl-ugb" customClass="RegisterMatchTableViewController" customModule="shark_hunt" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="iAI-Zl-ugb" customClass="RegisterMatchTableViewController" customModule="Shark_Hunt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" id="I7B-e7-Zed">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -751,7 +752,7 @@
         <!--Settings-->
         <scene sceneID="4ne-5T-2OK">
             <objects>
-                <tableViewController id="IGt-Sy-oVj" userLabel="Settings" customClass="SettingsViewController" customModule="shark_hunt" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="IGt-Sy-oVj" userLabel="Settings" customClass="SettingsViewController" customModule="Shark_Hunt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IAE-KA-ezj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -806,7 +807,7 @@
         <!--Personal Match History View Controller-->
         <scene sceneID="SK0-CJ-RZB">
             <objects>
-                <viewController id="NVa-dd-rzu" customClass="PersonalMatchHistoryViewController" customModule="shark_hunt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NVa-dd-rzu" customClass="PersonalMatchHistoryViewController" customModule="Shark_Hunt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z01-VR-95Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -815,7 +816,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicMatchHistoryCell" rowHeight="97" id="tVd-BB-Chf" customClass="MatchTableViewCell" customModule="shark_hunt" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicMatchHistoryCell" rowHeight="97" id="tVd-BB-Chf" customClass="MatchTableViewCell" customModule="Shark_Hunt" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="97"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tVd-BB-Chf" id="88K-Ue-l2a">
